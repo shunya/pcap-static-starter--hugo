@@ -1,0 +1,55 @@
+<!-- React generated HTML -->
+<div class="ReactModal__Content ReactModal__Content--after-open pc-modal" tabindex="-1" aria-label="Example Modal" style="position:relative;transform:none;left:0;margin:0;">
+  <button type="button" class="pc-btn pc-btn--stripped pc-modal__close-button " style="color:white;">×</button>
+  <section class="pc-modal__header"><h1 class="pc-modal__title">Example Modal</h1></section>
+  <section class="pc-modal__content">
+    <p>This is our shiny new modal component.</p>
+    <button class="pc-btn">Me Gusta</button>
+  </section>
+</div>
+
+<script type="text/javascript">
+import React from 'react';
+import Modal from 'babel-loader!components/modal/Modal';
+
+export default class ModalLauncherExample extends React.Component {
+  constructor() {
+    super(...arguments);
+    this.state = { openModal: false };
+  }
+
+  onOpenModalClick() {
+    this.setState({ openModal: true });
+  }
+
+  onCloseModalClick() {
+    this.setState({ openModal: false });
+  }
+
+  onModalClosed() {
+    // Synchronize this.state.openModal in case the modal was closed via overlay or x button
+    this.setState({ openModal: false });
+  }
+
+  render() {
+    return <div>
+      <button onClick={this.onOpenModalClick.bind(this)}>Show Modal</button>
+      <Modal
+        componentName="Example Modal"            // Component name to use when tracking analytics events. Default "PC Modal"
+        title="Example Modal"                    // Optional modal title
+        showCloseButton={true}                   // Show X button on modal? Default: true
+        onClosed={this.onModalClosed.bind(this)} // Callback function for when modal is closed
+
+        /* Partial react-modal component APIs
+         * See full API at https://reactcommunity.org/react-modal/
+         ========================================================================= */
+        isOpen={this.state.openModal}            // Show the modal right away? Default: false
+        shouldCloseOnOverlayClick={true}         // Make overlay click close modal? Default: true
+      >
+        <p>This is our shiny new modal component.</p>
+        <button className="pc-btn" onClick={this.onCloseModalClick.bind(this)}>Me Gusta</button>
+      </Modal>
+    </div>
+  }
+}
+</script>

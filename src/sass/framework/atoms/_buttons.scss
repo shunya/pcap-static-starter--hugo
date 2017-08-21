@@ -1,0 +1,304 @@
+/**
+ * Requires:
+ *   - `constants`
+ */
+
+$pcWarningButtonBackground: #f03240;
+$pcPrimaryButtonBackground: #aa1f77;
+
+/**
+ * 1. These styles should not be here, however they are required
+ *    to override `styles/scss/bootstrap/_tags.scss`. Need to remove
+ *    that file eventually.
+ */
+
+.pc-button {
+  @extend %pc-btn;
+  min-width: 100px;
+  text-transform: none; /* [1] */
+  border-radius: 0;     /* [1] */
+
+  &:hover {
+    background: darken($inuit-btn-background, 15%);
+  }
+}
+
+
+.pc-button.is-disabled,
+.pc-button[disabled] {
+  cursor: not-allowed;
+}
+
+.pc-button.mod-primary,
+%pc-btn--primary {
+  color: #fff;
+  background: $pcPrimaryButtonBackground;
+  &:hover {
+    color: #fff;
+    background: darken($pcPrimaryButtonBackground, 15%);
+  }
+}
+
+.pc-button.mod-primary.is-disabled {
+  color: #999;
+  &, &:hover {
+    background: $pcPrimaryButtonBackground;
+  }
+}
+
+.pc-button.mod-warning {
+  color: #fff;
+  background: $pcWarningButtonBackground;
+  &:hover {
+    color: #fff;
+    background: darken($pcWarningButtonBackground, 15%);
+  }
+}
+
+.pc-button.mod-warning.is-disabled {
+  color: #999;
+  &, &:hover {
+    cursor: default;
+    background: $pcWarningButtonBackground;
+  }
+}
+
+.pc-button.mod-call-to-action {
+  @extend %pc-btn--primary;
+  @extend %pc-btn--large;
+  text-transform: uppercase;
+}
+
+.pc-button.mod-call-to-action-small {
+  background: $pcPrimaryButtonBackground;
+  @extend %pc-btn--small;
+  font-size: $font-size--milli;
+  min-width: 60px;
+  &, &:hover {
+    color: #fff;
+  }
+}
+
+
+/**
+ * Primary (Blue) variation.
+ */
+
+.pc-button--primary {
+  color: #fff;
+  background: $color-primary;
+  &:hover {
+    color: #fff;
+    background: darken($color-primary, 15%);
+  }
+  &:focus {
+    color: #fff;
+  }
+}
+
+.pc-button--primary[disabled] {
+  cursor: not-allowed;
+  opacity: .6;
+  &:hover {
+    background: $color-primary;
+  }
+}
+
+
+/**
+ * Success (Green) variation.
+ */
+
+.pc-button--success {
+  color: #fff;
+  background: $color-success;
+  &:hover {
+    color: #fff;
+    background: darken($color-success, 15%);
+  }
+}
+
+.pc-button--success[disabled] {
+  cursor: not-allowed;
+  opacity: .6;
+  &:hover {
+    background: $color-success;
+  }
+}
+
+
+/**
+ * Danger (Red) variation.
+ */
+
+.pc-button--danger {
+  color: #fff;
+  background: $color-negative;
+  &:hover, &:active, &:focus {
+    color: #fff;
+    background: darken($color-negative, 15%);
+  }
+}
+
+
+/**
+ * Bare button variation.
+ * The button with a boder and a transparent background.
+ * Combine with a color variation (e.g. `pc-button--primary`) to change
+ * the border and text color.
+ *
+ * 1. This is the only button that has a border.
+ *    Need to substract the width of the border to match
+ *    the size of other buttons.
+ */
+
+.pc-button--bare {
+  background-color: transparent;
+  border: 1px solid $inuit-btn-border-color;
+  padding: $inuit-btn-padding - 1  double($inuit-btn-padding) - 1; /* [1] */
+  &:hover, &:active, &:focus {
+    background-color: transparent;
+    border-color: darken($inuit-btn-border-color, 15%);
+  }
+
+
+  &.pc-button--primary {
+    color: $color-primary;
+    border-color: $color-primary;
+    &:hover, &:active, &:focus {
+      color: darken($color-primary, 15%);
+      border-color: darken($color-primary, 15%);
+    }
+  }
+
+
+  &.pc-button--danger {
+    color: $color-negative;
+    border-color: $color-negative;
+    &:hover, &:active, &:focus {
+      color: darken($color-negative, 15%);
+      border-color: darken($color-negative, 15%);
+    }
+  }
+}
+
+.pc-button--bare[disabled],
+.pc-button--bare.pc-button--disabled {
+  cursor: not-allowed;
+  opacity: .6;
+  &:hover, &:active, &:focus {
+    background-color: transparent;
+  }
+
+
+  &.pc-button--primary {
+    &:hover, &:active, &:focus {
+      color: $color-primary;
+      border-color: $color-primary;
+    }
+  }
+
+
+  &.pc-button--danger {
+    &:hover, &:active, &:focus {
+      color: $color-negative;
+      border-color: $color-negative;
+    }
+  }
+}
+
+
+.pc-button--bare.pc-button--large {
+  padding: $inuit-btn-padding--large - 1  double($inuit-btn-padding--large) - 1; /* [1] */
+}
+
+
+.pc-button--bare.pc-button--small {
+  padding: $inuit-btn-padding--small - 1  double($inuit-btn-padding--small) - 1; /* [1] */
+}
+
+ /**
+  * Small buttons.
+  */
+
+.pc-button--small {
+  @extend %pc-btn--small;
+}
+
+/**
+ * Large button.
+ */
+
+.pc-button--large {
+  @extend %pc-btn--large;
+}
+
+
+
+/**
+  * Icon button.
+  * A small button with only an icon inside of it.
+  * Most likely to be combined with `pc-button--bare`.
+  */
+
+.#{$inuit-btn-namespace}btn--icon,
+.#{$inuit-btn-namespace}button--icon {
+  min-width: 0;
+  padding: $inuit-base-spacing-unit--tiny;
+  line-height: $inuit-base-spacing-unit--small;
+  text-align: center;
+
+  .icon {
+    width: 14px;
+    height: 14px;
+  }
+}
+
+
+// @Deprecated
+// `.pc-button` with no modifiers should be used for the default button.
+//
+// This class is for the time when we need to support both the new and the old versions of the theme.
+.pc-button.mod-default-legacy {
+  background-color: #fff;
+  color: #666;
+  border: 1px solid #b3b3b3;
+
+  &:hover {
+    background-color: #e6e6e6;
+  }
+}
+
+.pc-button-with-icon {
+  display: inline-block;
+  padding: 0 0 0 13px;
+  &:hover, &:active, &:visited, &:link {
+    color: #3b3b3b;
+    text-decoration: none;
+  }
+}
+
+.pc-button-with-icon.mod-remove {
+  background: url("/static/img/sidebar/removeIconGray.png") 0 center no-repeat;
+  &:hover {
+    color: $color-negative;
+    background-image: url("/static/img/sidebar/removeIconHover.png");
+  }
+}
+
+.pc-button.mod-small {
+  @extend %pc-btn--small;
+  font-size: $font-size--milli;
+  min-width: 60px;
+}
+
+// @Deprecated
+// Use `.mod-small`
+//
+// This class is for the time when we need to support both the new and the old versions of the theme.
+.pc-button.mod-toolbar-legacy {
+  font-size: 10px;
+  min-width: 60px;
+  border-radius: 3px;
+  text-transform: uppercase;
+}

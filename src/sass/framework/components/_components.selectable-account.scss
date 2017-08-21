@@ -1,0 +1,94 @@
+/* ============================================================================
+   CORE -> COMPONENTS -> SELECTABLE ACCOUNT
+   ========================================================================= */
+
+
+/**
+ * Selectable Account
+ *
+ * The composite display name of an account (firm name + account name) combined with a checkbox for selection.
+ *
+ *
+ * Markup:
+    <label class="selectable-account {{modifier_class}}" data-hj-masked>
+      <span class="selectable-account__checkbox">
+        <input type="checkbox">
+      </span>
+      <span class="selectable-account__body">
+        <span class="selectable-account__name">Fidelity</span>
+        <span class="selectable-account__info">Annuity - Taxable / Non-Qualified</span>
+      </span>
+    </label>
+ *
+ * .selectable-account--dark - Dark selectable account
+ * .selectable-account--small - Small selectable account
+ * .selectable-account--tiny - Tiny selectable account
+ *
+ * Styleguide: Framework - Components - Selectable Account
+ */
+
+
+.selectable-account {
+  display: flex;
+}
+
+.selectable-account__checkbox {
+  align-self: flex-end;
+  display: block;
+  flex: 0 1 auto;
+  margin-right: $inuit-base-spacing-unit--tiny;
+}
+
+.selectable-account__body {
+  overflow: hidden;
+  flex: 1 1 auto;
+}
+
+.selectable-account__name {
+  @extend %u-clip-text;
+
+  display: block;
+  font-weight: bold;
+}
+
+.selectable-account__info {
+  @extend %u-clip-text;
+
+  display: block;
+}
+
+
+/* Color Variations
+   ========================================================================= */
+
+.selectable-account--dark {
+  .selectable-account__name {
+    color: $color--selectable-account-name-dark;
+  }
+
+  .selectable-account__info {
+    color: $color--selectable-account-info-dark;
+  }
+}
+
+.selectable-account--disabled {
+  .selectable-account__name {
+    color: rgba($color--selectable-account-name-dark, 0.8);
+  }
+
+  .selectable-account__info {
+    color: rgba($color--selectable-account-info-dark, 0.8);
+  }
+}
+
+
+/* Size Variations
+   ========================================================================= */
+
+.selectable-account--small {
+  @include inuit-font-size($font-size--milli, 16px);
+}
+
+.selectable-account--tiny {
+  @include inuit-font-size($font-size--micro, 16px);
+}

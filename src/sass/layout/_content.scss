@@ -1,0 +1,16 @@
+$main-container--width: 970px;
+
+.container {
+    width: $main-container--width;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.l-content {
+    min-height: 100%;
+}
+
+.l-content__inner {
+    padding-top: $inuit-padding--large + $inuit-base-spacing-unit;
+    padding-bottom: $inuit-padding--large + $inuit-base-spacing-unit--large;
+}

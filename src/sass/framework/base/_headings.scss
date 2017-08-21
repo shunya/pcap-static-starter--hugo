@@ -1,0 +1,43 @@
+/* ============================================================================
+   HEADINGS
+   ========================================================================= */
+
+/**
+ * Headings 1–6.
+ *
+ * Apply light font-weight for headings.
+ */
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-weight: 300;
+}
+
+
+
+
+
+/**
+ * Marketing headings.
+ *
+ * Special treatment for headings when we want to mimic the marketing site.
+ */
+
+.heading--marketing {
+  color: $color-primary;
+}
+
+// TODO remove the default light font-weight from H elements and add a --light modifier.
+// Doing that the other way araund for now as a quicker solution.
+.heading--normal {
+  font-weight: normal;
+}
+
+.heading--emphasized {
+  font-weight: bold;
+  border-bottom: 1px solid;
+}

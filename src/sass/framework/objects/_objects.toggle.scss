@@ -1,0 +1,108 @@
+/**
+ * The toggle object which indicates that the element can be expanded.
+ */
+
+// 1. Center the icon vertically.
+//    Fine-tune by the half of the height of the element.
+// 2. Rotate the toggle element to indicate that it's open.
+
+// Collapsable panel toggle
+//
+// Toggle icon to collapse panels.
+// * Important background-color set only for this purpose, if you want to see the real color disable the BG from the inspector
+//
+// .pc-toggle--caret - A caret toggle
+// .pc-toggle--primary - A primary toggle
+// .pc-toggle--gray - A gray toggle
+// .pc-toggle--white - A white toggle
+// .pc-toggle--caret.pc-toggle--primary - A primary (color) caret
+//
+// Markup: _objects.toggle.html
+//
+// Styleguide Framework - Components - Collapsable - Toggle
+.#{$inuit-namespace}toggle {
+  @extend %icon;
+
+  height: $inuit-base-spacing-unit;
+  width: $inuit-base-spacing-unit;
+  background-image: url("/static/img/icons/down-open--white.svg");
+  position: absolute;
+  right: $inuit-base-spacing-unit - $inuit-base-spacing-unit / 2;
+  top: 50%;
+  margin-top: -$inuit-base-spacing-unit / 2;
+  transform: scaleY(-1);
+  transition: -webkit-transform 0.35s ease;
+  transition: transform 0.35s ease;
+}
+
+.#{$inuit-namespace}toggle--caret {
+  background-image: url("/static/img/icons/caret-down.svg");
+  transform: scaleY(1);
+}
+
+// 1. Bootstrap `toggle` js component adds `collapsed` class name
+//    on the closed header element. Reset the rotation in this state.
+.collapsed .#{$inuit-namespace}toggle {
+  transform: scaleY(1);
+}
+
+.collapsed .#{$inuit-namespace}toggle--caret {
+  transform: scaleY(1) rotate(-90deg);
+}
+
+
+/**
+ * Position variations
+ */
+
+.#{$inuit-namespace}toggle--inline {
+  right: auto;
+  margin-left: $inuit-base-spacing-unit--small;
+}
+
+.#{$inuit-namespace}toggle--inline.#{$inuit-namespace}toggle--small {
+  right: auto;
+  margin-left: 2px;
+}
+
+/**
+ * Color variations
+ */
+
+.#{$inuit-namespace}toggle--primary {
+  background-image: url("/static/img/icons/down-open--primary.svg");
+}
+
+.#{$inuit-namespace}toggle--gray {
+  background-image: url("/static/img/icons/down-open--gray.svg");
+}
+
+.#{$inuit-namespace}toggle--caret-white {
+  background-image: url("/static/img/icons/caret-down--white.svg");
+}
+
+.#{$inuit-namespace}toggle--caret-gray {
+  background-image: url("/static/img/icons/caret-down--gray.svg");
+}
+
+.#{$inuit-namespace}toggle--caret.#{$inuit-namespace}toggle--primary {
+  background-image: url("/static/img/icons/caret-down--primary.svg");
+}
+
+/**
+ * Size variations
+ */
+
+.#{$inuit-namespace}toggle--small {
+  height: $inuit-base-spacing-unit--small;
+  width: $inuit-base-spacing-unit--small;
+  margin-top: -$inuit-base-spacing-unit--small / 2;
+  right: $inuit-base-spacing-unit--small - $inuit-base-spacing-unit--small / 2;
+}
+
+.#{$inuit-namespace}toggle--tiny {
+  height: $inuit-base-spacing-unit--tiny;
+  width: $inuit-base-spacing-unit--tiny;
+  margin-top: -$inuit-base-spacing-unit--tiny / 2;
+  right: $inuit-base-spacing-unit--tiny;
+}

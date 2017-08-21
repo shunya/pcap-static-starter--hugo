@@ -1,0 +1,70 @@
+/* ============================================================================
+   CORE -> COMPONENTS -> Date Range Selector
+   ========================================================================= */
+
+/**
+ * Date Range Selector
+ *
+ * The Date Range selector comprises of two parts. The first is a simple dropdown menu
+ * that shows the preset time periods (30 days, 90 days, 6 months, etc). The second consists
+ * of two inputs that are used to input custom date ranges. These are linked to the jquery calendar
+ *
+ *
+ * Markup:
+  <div class="date-range">
+    <div class="dropdown date-range">
+      <button class="pc-btn pc-btn--toggle pc-btn--tiny date-range__button" type="button" data-toggle="dropdown">
+        90 days
+        <div class="pc-toggle pc-toggle--caret pc-toggle--caret-white pc-toggle--tiny"></div>
+      </button>
+      <ul class="menu menu--vertical menu--bordered menu--tiny date-range__list js-period-list">
+        <li class="menu__item menu__item--box js-period-item date-range__item " data-value="d,-29">30 days</li>
+        <li class="menu__item menu__item--box js-period-item date-range__item selected" data-value="d,-89">90 days</li>
+        <li class="menu__item menu__item--box js-period-item date-range__item " data-value="M,-6">6 months</li>
+        <li class="menu__item menu__item--box js-period-item date-range__item " data-value="y,0s">This Year</li>
+        <li class="menu__item menu__item--box js-period-item date-range__item " data-value="y,-1s;y,-1e">Last Year</li>
+      </ul>
+    </div>
+    <div class="date-range__inputs">
+      <input type="text" class="input input--tiny date-range__input date js-start-date  hasDatepicker" value="10/21/16" name="from" id="dp1484791445475">
+      <label class="date-range__label" for="to"> to </label>
+      <input type="text" class="input input--tiny date-range__input date js-end-date hasDatepicker" value="01/18/17" name="to" id="dp1484791445476">
+    </div>
+  </div>
+ *
+ *
+ * Styleguide: Components - Date Range Selector
+ */
+
+/**
+ *
+ * 1. Font-size is set to zero/16px to get rid of white-space between elements
+ *
+ */
+.date-range { /* 1 */
+  font-size: 0;
+
+  .dropdown {
+    font-size: $font-size--base; /* 1 */
+  }
+}
+
+.date-range__inputs {
+  display: inline-block;
+  background-color: $color--ghost-white;
+}
+
+.date-range__input {
+  @extend %u-text-center;
+
+  width: 65px;
+  font-weight: bold;
+}
+
+.date-range__label {
+  @extend %micro;
+  @extend %u-text-center;
+
+  color: $color--dim-gray;
+}
+

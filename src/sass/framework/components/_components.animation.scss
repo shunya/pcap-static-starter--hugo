@@ -1,0 +1,33 @@
+/* ============================================================================
+   CORE -> COMPONENTS -> ANIMATION
+   ========================================================================= */
+
+
+$animation-duration: 250ms;
+$easing-function-ease-out--quint: cubic-bezier(0.23, 1, 0.32, 1);
+$easing-function-ease-out--quad: cubic-bezier(0.25, 0.46, 0.45, 0.94);
+
+
+/* Animation Definition
+   ========================================================================= */
+
+@keyframes fade-in {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+
+/* Mixins
+   ========================================================================= */
+
+@mixin animation--fade-in() {
+  animation: fade-in $animation-duration;
+}
+
+
+/* Utility Classes
+   ========================================================================= */
+
+.animation--fade-in {
+  @include animation--fade-in();
+}

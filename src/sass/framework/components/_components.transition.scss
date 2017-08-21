@@ -1,0 +1,101 @@
+/* ============================================================================
+   CORE -> COMPONENTS -> TRANSITION
+   ========================================================================= */
+
+$transition-duration: 250ms;
+$easing-function-ease-out--quint: cubic-bezier(0.23, 1, 0.32, 1);
+$easing-function-ease-out--quad: cubic-bezier(0.25, 0.46, 0.45, 0.94);
+
+
+
+
+/* Mixins
+   ========================================================================= */
+
+/**
+ *  Creates a group of classes to be used with `react-transition-group`
+ *  for expand transition.
+ */
+@mixin transition-group--expand($class-name, $height--final) {
+  .#{$class-name}-enter {
+    height: 0;
+    opacity: 0;
+    overflow: hidden;
+    transition:
+      height $easing-function-ease-out--quad $transition-duration,
+      opacity $easing-function-ease-out--quad $transition-duration;
+  }
+
+  .#{$class-name}-enter-active {
+    height: $height--final;
+    opacity: 1;
+  }
+}
+
+/**
+ *  Creates a group of classes to be used with `react-transition-group`
+ *  for collapse transition.
+ */
+@mixin transition-group--collapse($class-name, $height--initial) {
+  .#{$class-name}-leave {
+    height: $height--initial;
+    opacity: 1;
+    overflow: hidden;
+    transition:
+      height $easing-function-ease-out--quad $transition-duration,
+      opacity $easing-function-ease-out--quad $transition-duration;
+  }
+
+  .#{$class-name}-leave-active {
+    height: 0;
+    opacity: 0;
+  }
+}
+
+
+
+
+/* TransitionGroup Classes (react-transition-group)
+   ========================================================================= */
+
+/**
+ * Transition classes following the naming convention for TransitionGroup and CSSTransitionGroup
+ * React component from [react-transition-group](https://github.com/reactjs/react-transition-group)
+ *
+ * Format: {transition-name}-[enter|leave]-[active]
+ *
+ */
+
+// Fade
+.transition-fade-enter {
+  opacity: 0;
+  transition: opacity $easing-function-ease-out--quint $transition-duration;
+}
+
+.transition-fade-enter-active {
+  opacity: 1;
+}
+
+.transition-fade-leave {
+  opacity: 1;
+  transition: opacity $easing-function-ease-out--quint $transition-duration;
+}
+
+.transition-fade-leave-active {
+  opacity: 0;
+}
+
+
+// Form Group
+@include transition-group--expand("transition-form-group", 84px);
+@include transition-group--collapse("transition-form-group", 60px);
+@include transition-group--expand("transition-form-group--inline", 60px);
+@include transition-group--collapse("transition-form-group--inline", 60px);
+
+
+// Expand/Collapse base-spacing-unit
+@include transition-group--expand("transition-height", $inuit-base-spacing-unit);
+@include transition-group--collapse("transition-height", $inuit-base-spacing-unit);
+@include transition-group--expand("transition-height--large", $inuit-base-spacing-unit--large);
+@include transition-group--collapse("transition-height--large", $inuit-base-spacing-unit--large);
+

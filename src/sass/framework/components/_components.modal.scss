@@ -1,0 +1,118 @@
+/**
+ * Modals
+ *
+ * This is a higher order component wrapping the open source react-modal from https://reactcommunity.org/react-modal/
+ *
+ * Markup:
+ * _components.modal.html
+ *
+ * Styleguide: Framework - Components - Modal
+ */
+
+.pc-modal {
+  @extend %u-full-center--abs;
+
+  display: flex;
+  flex-direction: column;
+  width: 640px;
+  min-height: 100px;
+  max-height: 100vh;
+  background: white;
+  outline: none;
+  box-shadow: 0 2px 8px 0 rgba($color--arsenic, 0.65);
+}
+
+.pc-modal--ghost-white {
+  background: $color--ghost-white;
+}
+
+.pc-modal--advice-disclaimer {
+  @include inuit-font-size($font-size--micro, 1.2);
+
+  position: absolute;
+  right: $inuit-base-spacing-unit;
+  bottom: $inuit-base-spacing-unit--tiny;
+}
+
+.pc-modal__header {
+  flex: none;
+  background: $color--arsenic;
+}
+
+.pc-modal__title {
+  @extend %pc-beta;
+
+  color: white;
+  margin: 0;
+  padding: $inuit-base-spacing-unit;
+}
+
+.pc-modal__content {
+  flex: 1 1 auto;
+  overflow-y: auto;
+  padding: $inuit-base-spacing-unit;
+  position: relative;
+}
+
+.pc-modal__close-button {
+  @include inuit-font-size($font-size--heading-3, inherit);
+
+  font-weight: 300;
+  position: absolute;
+  top: 0;
+  right: 0;
+  padding: 0;
+  width: 29px;
+
+  &,
+  &:hover,
+  &:focus {
+    color: white;
+  }
+}
+
+.pc-modal__close-button--light-content {
+  &,
+  &:hover,
+  &:focus {
+    color: $color--dim-gray;
+  }
+}
+
+
+/**
+ * Hide the loading indicator if the overlay is inside of the modal dialog.
+ *
+ * TODO Create a lighter alternative of the loading indicator for the targeted usages
+ * such as a section of the page or a modal dialog.
+ */
+.pc-modal .pc-overlay__loader {
+  display: none;
+}
+
+
+
+/**
+ * Modifier to make the modal compatible with bootstrap.
+ *
+ * 1. Uses Bootstrap's z-index scale.
+ */
+.pc-modal--bootstrap {
+  z-index: 5050;  /* [1] */
+}
+
+
+/* Size Variations
+   ========================================================================= */
+
+.pc-modal--tiny {
+  width: 320px;
+}
+
+.pc-modal--small {
+  width: 480px;
+}
+
+.pc-modal--large {
+  width: 800px;
+}

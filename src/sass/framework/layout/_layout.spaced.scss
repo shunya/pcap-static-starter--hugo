@@ -1,0 +1,49 @@
+/* ============================================================================
+   CORE -> LAYOUT -> SPACED
+   ========================================================================= */
+
+/**
+ * Spaced
+ *
+ * Evenly distributs the children in the available space, with half-size spaces
+ * on either end.
+ *
+ * Markup:
+   <div class="l-spaced {{modifier_class}}">
+     <div class="pc-u-p">Left Block</div>
+     <div class="pc-u-p">Right Block</div>
+   </div>
+ *
+ * .l-spaced--flush - Removes the spaces on either end. Especially useful for creating two column
+ *                    split layout.
+ *
+ * Styleguide: Framework - Layout - Spaced
+ */
+
+.l-spaced {
+  display: flex;
+  flex-flow: row wrap;
+  align-items: center;
+  justify-content: space-around;
+}
+
+
+
+/* Variations
+   ========================================================================= */
+
+.l-spaced--flush {
+  justify-content: space-between;
+}
+
+.l-spaced--equal-height {
+  flex-wrap: nowrap;
+}
+
+.l-spaced--left {
+  justify-content: flex-start;
+}
+
+.l-spaced--top {
+  align-items: flex-start;
+}

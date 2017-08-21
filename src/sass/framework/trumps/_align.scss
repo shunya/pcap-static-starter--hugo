@@ -1,0 +1,46 @@
+/* ============================================================================
+   ALIGN UTILITY
+   ========================================================================= */
+
+
+/**
+ * Vertically centers block content inside of a parent container
+ * of an unknown height.
+ *
+ * NOTE: parent element must have `relative` or `absolute` position.
+ *
+ *
+ * <div class="parent">
+ *   <div class="u-vertical-center--abs">Lorem ipsum</div>
+ * </div>
+ *
+ */
+
+.u-vertical-center--abs,
+%u-vertical-center--abs {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+}
+
+
+/**
+ * Fully centers (vertically and horizontally) block content inside
+ * of a parent container of an unknown width and height.
+ *
+ * NOTE: parent element must have `relative` or `absolute` position.
+ *
+ *
+ * <div class="parent">
+ *   <div class="u-full-center--abs">Lorem ipsum</div>
+ * </div>
+ *
+ */
+
+.u-full-center--abs,
+%u-full-center--abs {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+}

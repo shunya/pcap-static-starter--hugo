@@ -1,0 +1,50 @@
+/**
+ * Chart loader
+ *
+ * Your default loader suitable for charts. Toggle it's visibility by adding the `chart-loader--active` class
+ *
+ * Markup:
+    <div class="js-hook chart-loader chart-loader--active">
+      <div class="chart-loader__inner">loading</div>
+    </div>
+ *
+ *
+ * Styleguide: Framework - Components - Loaders
+ */
+.chart-loader {
+  display: none;
+  height: 25px;
+  background: $color--ghost-white;
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  z-index: 2;
+  line-height: 25px;
+  color: $color--arsenic;
+}
+
+.chart-loader__inner {
+  width: 80px;
+  margin-left: auto;
+  margin-right: auto;
+
+  &::after {
+    overflow: hidden;
+    display: inline-block;
+    content: "\2026";
+    width: 0px;
+    vertical-align: bottom;
+  }
+}
+
+.chart-loader--active {
+  display: block;
+
+  .chart-loader__inner::after {
+    animation: chart-animation-ellipsis steps(4, end) 900ms infinite;
+  }
+}
+
+@keyframes chart-animation-ellipsis {
+  to { width: 1em; }
+}

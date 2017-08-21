@@ -1,0 +1,167 @@
+/* ------------------------------------*\
+    #input
+\*------------------------------------ */
+
+// TODO styles from `styles/scss/framework/components/_components.forms.scss`
+// These styles should be removed after we restyle inputs across the application
+// These are old styles from bootstrap put here to solve a hierarchy issue
+[type="text"],
+[type="number"],
+[type="password"],
+textarea {
+  border: 1px solid darkgrey;
+  padding: 6px;
+}
+
+
+/**
+ * Inputs
+ *
+ * Your default inputs suitable for text. Remember to use `aria-label="text to read"` to describe the input if not label is present OR
+ * `aria-labelledby="<label-id>"` to establishes relationship between the input and his label.
+ * If information entered into forms must be formatted a specific way, adequate instructions must be provided within
+ * the form control's label or other associated content (such as with `aria-describedby="extended explanation, it will  only be for screen readers"`).
+ * If the input control is requiered, use `aria-required`.
+ * Regardless of the mechanism used to identify and recover from form errors, `aria-invalid="true"` should generally
+ * be set on each invalid form control. This attribute causes screen readers to identify the control
+ * as being "invalid" or in need of attention.
+ *
+ * Markup:
+    <input type="text" aria-label="example default" class="input {{modifier_class}}" value="default">
+    <input type="text" aria-label="example focused" class="input {{modifier_class}} pseudo-class-focus" placeholder="focus (placeholder)">
+    <input type="text" aria-label="example disabled" class="input {{modifier_class}}" value="disabled" disabled>
+ *
+ * .input--tiny - Tiny inputs
+ * .input--small - Small inputs
+ * .input--large - Large inputs
+ * .input--error - Error modifier, this is how an input should look after failing a validation
+ * .input--full - Full-width inputs
+ *
+ * Styleguide: Framework - Components - Inputs-Text
+ */
+.input,
+%input {
+  background: $color--ghost-white;
+  border: 1px solid transparent;
+  box-sizing: border-box;
+  color: $color--arsenic;
+  line-height: $line-height--base;
+  padding: $inuit-base-spacing-unit--tiny - 1px $inuit-base-spacing-unit--small - 1px;  // subtract 1px to compensate for the border
+
+  &:focus {
+    box-shadow: inset 0 0 4px 0 $color--curious-blue;
+  }
+
+  &:disabled {
+    color: $color--dim-gray;
+    background-color: #fff;
+    border-color: $color--ghost-white;
+  }
+}
+
+
+/**
+ *  1. Allow to target `select` elements.
+ *  2. Set the height to line height + vertical paddings.
+ */
+select.input {  /* [1] */   // stylelint-disable-line selector-no-qualifying-type
+  height: $inuit-base-spacing-unit + $inuit-base-spacing-unit--small;   /* [2] */
+}
+
+select.select--bare { /* [1] */   // stylelint-disable-line selector-no-qualifying-type
+  border: none;
+  font-weight: bold;
+  line-height: 1.3em;
+  color: $color--curious-blue;
+  padding: 0 $inuit-base-spacing-unit $inuit-base-spacing-unit--tiny / 2 $inuit-base-spacing-unit--tiny;
+  border-bottom: solid 2px $color--curious-blue;
+  appearance: none;
+  background: white url("data:image/svg+xml;base64,PHN2ZyB2aWV3Qm94PSIwIDAgOCA0IiB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciPiAgPHRpdGxlPlRyaWFuZ2xlPC90aXRsZT4gIDxkZWZzPjwvZGVmcz4gIDxnIHRyYW5zZm9ybT0idHJhbnNsYXRlKC02LjAwMDAwMCwgLTIzLjAwMDAwMCkiPiAgICA8cG9seWdvbiBpZD0iVHJpYW5nbGUiIHRyYW5zZm9ybT0idHJhbnNsYXRlKDEwLjAwMDAwMCwgMjUuMDAwMDAwKSByb3RhdGUoMTgwLjAwMDAwMCkgdHJhbnNsYXRlKC0xMC4wMDAwMDAsIC0yNS4wMDAwMDApIiBmaWxsPSIjNDA3Y2NhIiBwb2ludHM9IjEwIDIzIDE0IDI3IDYgMjciPjwvcG9seWdvbj4gIDwvZz48L3N2Zz4=") 98% center no-repeat;
+  background-size: 5%;
+  border-radius: 0;
+}
+
+/**
+ * Tiny size variation.
+ *
+ * 1. The specific height is required to fix IE10 issue.
+ *    The calculated value is equal to the line height + vertical paddings because of the `border-box`.
+ */
+.input--tiny,
+%input--tiny {
+  @extend %micro;
+
+  height: $inuit-base-spacing-unit + $inuit-base-spacing-unit--tiny !important;  /* [1] */ // stylelint-disable-line declaration-no-important
+  font-weight: bold;
+  padding: 0 $inuit-base-spacing-unit--tiny;
+}
+
+/**
+ * Small size variation.
+ *
+ * 1. The specific height is required to fix IE10 issue.
+ *    The calculated value is equal to the line height + vertical paddings because of the `border-box`.
+ */
+.input--small,
+%input--small {
+  @extend %centi;
+
+  height: $inuit-base-spacing-unit + $inuit-base-spacing-unit--tiny !important; /* [1] */ // stylelint-disable-line declaration-no-important
+  padding: 0 $inuit-base-spacing-unit--tiny;
+}
+
+/**
+ * large size variation.
+ */
+.input--large {
+  @extend %pc-beta;
+
+  padding: $inuit-base-spacing-unit--tiny $inuit-base-spacing-unit--small;
+}
+
+/**
+  * Full-width buttons.
+  */
+.input--full {
+  width: 100%;
+}
+
+.input--error,
+.input.error { // for compatibility with jquery validate https://jqueryvalidation.org/
+  box-shadow: inset 0 0 4px 0 $color--cabaret;
+}
+
+
+
+
+/**
+ * Form groups
+ *
+ * The form group container provides vertical spacing (`margin-bottom`) between form controls using inuit spacing system.
+ *
+ * Markup:
+    <div class="form-group {{modifier_class}}">
+      <label class="pc-label pc-label">First Name</label>
+      <input type="text" class="input">
+    </div>
+    <div class="form-group {{modifier_class}}">
+      <label class="pc-label pc-label">Last Name</label>
+      <input type="text" class="input">
+    </div>
+ *
+ * .form-group--tiny - Tiny form group
+ * .form-group--small - Small form group
+ *
+ * Styleguide: Framework - Components - Form-Groups
+ */
+.form-group {
+  margin-bottom: $inuit-base-spacing-unit;
+}
+
+.form-group--small {
+  margin-bottom: $inuit-base-spacing-unit--small;
+}
+
+.form-group--tiny {
+  margin-bottom: $inuit-base-spacing-unit--tiny;
+}

@@ -1,0 +1,16 @@
+/*------------------------------------*\
+    #Links
+\*------------------------------------*/
+
+$pcap-link-color:           #3b8fe1 !default;
+
+a {
+  color: $pcap-link-color;
+  text-decoration: none;
+
+  &:hover,
+  &:focus {
+    color: darken($pcap-link-color, 15%);
+    text-decoration: underline;
+  }
+}

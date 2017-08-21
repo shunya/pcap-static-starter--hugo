@@ -1,0 +1,502 @@
+/* ============================================================================
+   FRAMEWORK
+   ========================================================================= */
+
+/**
+ * Framework
+ *
+ * Weight: -1
+ *
+ * The global tools and components shared by many pages in the application.
+ *
+ * Styleguide Framework
+ */
+
+/**
+ * CONTENTS
+ *
+ * SETTINGS
+ * Defaults.............Globally-available variables and config.
+ * Responsive...........Viewport width breakpoints.
+ *
+ * TOOLS
+ * Functions............Math helpers for halve and double numbers, returning rounded integers.
+ * Mixins...............Mixins to create a fully formed type style (sizing and vertical rhythm).
+ * Responsive...........DEPRECATED in favor of `sass-mq` which will be part of the next stable release of Inuit CSS.
+ *                      A mixin to quickly generate whole media queries from the aliases
+ *                      and conditions defined in `_settings.responsive.scss`.
+ * sass-mq..............A Sass mixin that helps you compose media queries in an elegant way
+ * Width................Mixins to generate a suite of utility classes for sizing pieces of UI responsively,
+ *                      e.g.: @include inuit-widths(12);
+ *                      will generate a series of classes in the format .u-7/12 to be used for sizing.
+ * Hidden...............A helper to visually hide content for screen readers.
+ *                      TODO remove after Inuit CSS upgade. This helper function is included in the framework.
+ *
+ * GENERIC
+ * Normalize.css........A level playing field.
+ * Reset................Remove all margins from certain elements.
+ * Box-sizing...........Better default `box-sizing`.
+ * Shared...............Default margins (left and bottom) consistent with vertical rhythm.
+ *
+ * BASE
+ * Page.................High-, page-level styling. Font, line-height etc.
+ * Headings.............H1–H6 styles.
+ * Images...............Fluid images for responsive purposes and other sane defaults.
+ * Links................Anchor styles.
+ *
+ * OBJECTS
+ * List-bare............Removes any indents and bullet points from lists.
+ * List-inline..........Displays a list of items in one line.
+ * Buttons..............The button object.
+ * Layout...............Grid system.
+ * Takeaway.............The emphasized section on the page.
+ * Icon.................The icon object.
+ * Overlay..............Covers an area in the dom to create "busy" or "loading" effect.
+ * Font Sizing..........SI units abstract classes for non-standard font-sizing.
+ * Required.............Required marker for label elements.
+ * Definition...........Hints that a word or a fragment of text has a hover over explanation.
+ * Box..................The box object simply boxes off content.
+ * Toggle...............The toggle object which indicates that the element can be expanded.
+ * Spinkit..............A collection of loading indicators animated with CSS.
+ *
+ * LAYOUT
+ * Spaced...............Evenly spaces the children in the available space.
+ *
+ * COMPONENTS
+ * Tooltip..............Tooltip widget.
+ * Icons................A collection of icons.
+ * Forms................Form fields.
+ * Input group..........Wrap an input to add a prefix symbol (like a dollar sign) to it.
+ * Collapsible..........Collapsible widget.
+ * Chart Legend.........The legend items for the chart.
+ * Top-Bar..............The top-bar nav wrapper.
+ * Menu.................The all-purpose navigation component.
+ * Alert-Box............How we message the user with Errors, Warnings
+ * TourBus..............Theming for jquery tourbus.
+ *
+ * UTILITIES
+ * Headings.............Headings 1–6’s corresponding Greek-alphabet abstract classes for double-stranded
+ *                      heading hierarchy: csswizardry.com/2012/02/pragmatic-practical-font-sizing-in-css.
+ * Clearfix.............Micro clearfix, as per: css-101.org/articles/clearfix/latest-new-clearfix-so-far.php
+ * Width................A series of width helper classes that you can use to size things like grid systems.
+ * Width Responsive.....Responsive width classes based on our responsive settings.
+ * Help Block...........A block of help text.
+ * Clip Text............A utility class to truncate the text and display an ellipsis.
+ * Type.................A collection of type related utilities.
+ * Visibility...........A utility class to hide an element.
+ * Align................A collection of utilities to align content.
+ * Sticky...............A utility class to stick an element to the viewport.
+ */
+
+
+
+
+// - Settings: Global variables, site-wide settings, config switches, etc.
+// - Tools: Site-wide mixins and functions.
+// - Generic: Low-specificity, far-reaching rulesets (e.g. resets).
+// - Base: Unclassed HTML elements (e.g. a {}, blockquote {}, address {}).
+// - Objects: Objects, abstractions, and design patterns (e.g. .media {}).
+
+
+
+
+/* Settings
+   ========================================================================= */
+
+/**
+ * Settings
+ *
+ * Weight: -2
+ *
+ * Styleguide Framework - Settings
+ */
+
+@import "settings/colors";
+
+$inuit-namespace: "pc-";
+$inuit-base-text-color: $color--base-text;
+
+$inuit-heading-size-1: 32px;
+$inuit-heading-size-2: 24px;
+$inuit-heading-size-3: 18px;
+$inuit-heading-size-4: 16px;
+$inuit-heading-size-5: 14px;
+$inuit-heading-size-6: 12px;
+
+@import "../../../node_modules/inuit-defaults/settings.defaults";
+@import "../../../node_modules/inuit-responsive-settings/settings.responsive";
+@import "settings/settings.z-index";
+
+
+
+
+/* Aliases
+   ========================================================================= */
+
+$font-size--base: $inuit-base-font-size;
+$line-height--base: $inuit-base-line-height;
+
+$font-size--heading-1: $inuit-heading-size-1;
+$font-size--heading-2: $inuit-heading-size-2;
+$font-size--heading-3: $inuit-heading-size-3;
+$font-size--heading-4: $inuit-heading-size-4;
+$font-size--heading-5: $inuit-heading-size-5;
+$font-size--heading-6: $inuit-heading-size-6;
+
+
+
+
+/* Tools
+   ========================================================================= */
+
+@import "../../../node_modules/inuit-functions/tools.functions";
+@import "../../../node_modules/inuit-mixins/tools.mixins";
+@import "../../../node_modules/inuit-responsive-tools/tools.responsive";
+
+// Redefine wide breakpoint as part of PFM-2152
+$mq-breakpoints: (
+  mobile:       320px,
+  tablet:       740px,
+  desktop:      980px,
+  wide:         1248px,
+  extra-wide:   1378px
+);
+
+@import "../../../node_modules/sass-mq/mq";
+@import "../../../node_modules/inuit-tools-widths/tools.widths";
+@import "tools/tools.hidden";
+
+
+
+
+/* Generic
+   ========================================================================= */
+
+@import "../../../node_modules/inuit-normalize/generic.normalize";
+@import "../../../node_modules/inuit-reset/generic.reset";
+@import "../../../node_modules/inuit-shared/generic.shared";
+
+
+
+
+/* Base
+   ========================================================================= */
+
+/**
+ * Typography
+ *
+ * Weight: -1
+ *
+ * Body text size is set to `16px` while the line height is `24px`. The spacing between paragraphs
+ * is preset to match the vertical rhythm.
+ *
+ * #### SASS Variables
+ *
+ * | Variable             | Value |
+ * | :------------------- |:------|
+ * | `$font-size--base`   | 16px  |
+ * | `$line-height--base` | 24px  |
+ *
+ * Never use arbitrary values for `font-size` and `line-height`. All heading sizes as well as
+ * alternative font sizes *with preconfigured line heights* are provided by the framework as
+ * variables, classes and extends.
+ *
+ * **PRO TIP:** `inuit-font-size` mixin can be used to tweak the line hight, if the default doesn't
+ * work well for a particular situation. For example, narrow containers usually require smaller
+ * than the default line height. [Golden Ration Typography Calculator](https://pearsonified.com/typography/) is a
+ * great tool to calculate the proper line height value for such cases. Use `inuit-font-size()` then
+ * to override the line height.
+ *
+ *
+ * #### `inuit-font-size()`
+ *
+ * In the simplest form `inuit-font-size()` creates a fully formed type style (sizing and vertical rhythm)
+ * by passing in a single value, e.g.:
+ *
+ * ```css
+ * .foo {
+ *     @include inuit-font-size(12px);
+ * }
+ * ```
+ *
+ * This will generate a rem-based `font-size` with its pixel fallback, as well as
+ * a unitless `line-height` which will place the element on your baseline, e.g.:
+ *
+ * ```css
+ * .foo {
+ *     font-size: 12px;
+ *     font-size: 0.75rem;
+ *     line-height: 2;
+ * }
+ * ```
+ *
+ * If you do not want the framework to generate you a `line-height` automatically, you
+ * simply pass in your own as a second paramater:
+ *
+ * ```css
+ * .foo {
+ *     @include inuit-font-size($font-size--heading-1, 1.2);
+ * }
+ * ```
+ *
+ * This will yield:
+ *
+ * ```css
+ * .foo {
+ *     font-size: 12px;
+ *     font-size: 0.75rem;
+ *     line-height: 1.2;
+ * }
+ * ```
+ *
+ * This parameter can be any integer, `inherit`, or `normal`. If you don't want
+ * a `line-height` at all, pass in a second paramater of `none` or `false`:
+ *
+ * ```css
+ * .foo {
+ *     @include inuit-font-size(12px, none);
+ * }
+ * ```
+ *
+ * This will yield:
+ *
+ * ```css
+ * .foo {
+ *     font-size: 12px;
+ *     font-size: 0.75rem;
+ * }
+ * ```
+ *
+ * Styleguide: Framework - Typography
+ */
+
+
+/**
+ * Headings
+ *
+ * All the regular HTML heading elements `<h1>` through `<h6>` are available.
+ * In addition to the elements, there are helper classes corresponding to
+ * Greek-alphabet abstract classes for double-stranded heading hierarchy based on
+ * [Pragmatic, practical font sizing in CSS](http://csswizardry.com/2012/02/pragmatic-practical-font-sizing-in-css).
+ *
+ * Use these helper classes to cause other elements to adopt the styling of the
+ * respective heading, e.g.: `<h2 class="alpha">Lorem ipsum</h2>`
+ *
+ * #### SASS Variables
+ *
+ * | Variable                | Value |
+ * | :---------------------- |:------|
+ * | `$font-size--heading-1` | 32px  |
+ * | `$font-size--heading-2` | 24px  |
+ * | `$font-size--heading-3` | 18px  |
+ * | `$font-size--heading-4` | 16px  |
+ * | `$font-size--heading-5` | 14px  |
+ * | `$font-size--heading-6` | 12px  |
+ *
+ * Markup:
+   <h1>h1 or .pc-alpha — Heading 32px</h1>
+   <h2>h2 or .pc-beta — Heading 24px</h2>
+   <h3>h3 or .pc-gamma — Heading 18px</h3>
+   <h4>h4 or .pc-delta — Heading 16px</h4>
+   <h5>h5 or .pc-epsilon — Heading 14px</h5>
+   <h6>h6 or .pc-zeta — Heading 12px</h6>
+ *
+ *
+ * Styleguide: Framework - Typography - Headings
+ */
+
+@import "../../../node_modules/inuit-page/base.page";
+@import "base/base.page";
+@import "../../../node_modules/inuit-headings/base.headings";
+@import "base/headings";
+@import "../../../node_modules/inuit-images/base.images";
+@import "atoms/links";
+
+
+
+
+/* Objects
+   ========================================================================= */
+
+// TODO Review the defalt values for `$inuit-btn-background` and `$inuit-btn-color`.
+//      These should probably match `$pc-btn--background` and `$pc-btn--font-color`.
+$inuit-btn-background: #e6e6e6;
+$inuit-btn-color: $inuit-base-text-color;
+$inuit-btn-border-width: 1px;
+$inuit-btn-radius: 0;
+$inuit-btn-padding: quarter($inuit-base-spacing-unit);
+$inuit-enable-btn--large: true;
+$inuit-enable-btn--small: true;
+$inuit-enable-btn--full: true;
+
+$inuit-enable-table--fixed: true;
+$inuit-enable-table--rows: true;
+$inuit-enable-table--compact: true;
+$inuit-table-border-style: dashed;
+$inuit-table-border-color: #bfbfbf;
+
+$inuit-enable-layout--center: true;
+$inuit-enable-layout--right: true;
+$inuit-enable-layout--middle: true;
+$inuit-enable-layout--bottom: true;
+$inuit-enable-layout--large: true;
+$inuit-enable-layout--huge: true;
+$inuit-enable-layout--small: true;
+$inuit-enable-layout--tiny: true;
+$inuit-enable-layout--rev: true;
+$inuit-enable-layout--auto: true;
+$inuit-enable-layout--flush: true;
+
+$inuit-enable-block--center: true;
+$inuit-enable-block--flush: true;
+$inuit-enable-block--small: true;
+
+$inuit-enable-flag--top: true;
+$inuit-enable-flag--tiny: true;
+$inuit-enable-flag--small: true;
+$inuit-enable-flag--rev: true;
+
+$spinkit-spinner-margin: 0 auto;
+$spinkit-size: $inuit-base-spacing-unit;
+$spinkit-spinner-color: $inuit-base-text-color;
+
+@import "../../../node_modules/inuit-list-bare/objects.list-bare";
+@import "../../../node_modules/inuit-list-inline/objects.list-inline";
+@import "../../../node_modules/inuit-buttons/objects.buttons";
+@import "objects/font-sizing";
+@import "atoms/buttons";
+@import "../../../node_modules/inuit-layout/objects.layout";
+@import "objects/objects.layout.scss";
+@import "../../../node_modules/inuit-flag/objects.flag";
+@import "../../../node_modules/inuit-tables/objects.tables";
+@import "../../../node_modules/inuit-block/objects.block";
+@import "objects/takeway";
+@import "objects/icon";
+@import "objects/overlay";
+@import "objects/objects.required";
+@import "objects/objects.definition";
+@import "../../../node_modules/inuit-box/objects.box";
+@import "objects/objects.toggle";
+@import "../../../node_modules/spinkit/scss/spinners/8-circle";
+@import "objects/object.spinner";
+
+
+
+
+/* Layout
+   ========================================================================= */
+
+/**
+ * Layout
+ *
+ * The inuitcss layout system `node_modules/inuit-layout/_objects.layout.scss`
+ * uses `box-sizing: border-box;` and `display: inline-block;` to create an
+ * extremely powerful, flexible grid system. Combine the layout items with
+ * the widths found in `node_modules/inuit-widths/_trumps.widths.scss`.
+ *
+ * Markup: examples/layout.html
+ *
+ * .pc-layout--tiny - Layouts with tiny gutters.
+ * .pc-layout--small - Layouts with small gutters.
+ * .pc-layout--large - Layouts with large gutters.
+ * .pc-layout--huge - Layouts with huge gutters.
+ * .pc-layout--flush - Layouts with flush gutters.
+ * .pc-layout--rev - Reversed rendered order of layout items, e.g. items 1, 2, 3, 4 in your markup will display in order 4, 3, 2, 1 on your page.
+ * .pc-layout--middle - Align layout items to the vertical centers of each other.
+ * .pc-layout--bottom - Align layout items to the vertical bottoms of each other.
+ * .pc-layout--right - Make the layout items fill up from the right hand side.
+ * .pc-layout--center - Make the layout items fill up from the center outward.
+ * .pc-layout--auto - Cause layout items to take up a non-explicit amount of width.
+ *
+ * Styleguide Framework - Layout
+ */
+
+@import "layout/layout.spaced";
+
+
+
+
+
+/* Components
+   ========================================================================= */
+
+/**
+ * Components
+ *
+ * Discrete, complete chunks of UI (e.g. .carousel {}).
+ *
+ * Styleguide Framework - Components
+ */
+
+@import "components/accountSelector";
+@import "components/components.selectable-account";
+@import "components/bootstrap/components.animations";
+@import "components/bootstrap/components.tooltip";
+@import "components/components.icons";
+@import "components/components.forms";
+@import "components/components.input-group";
+@import "components/components.collapsible";
+@import "components/components.chart-legend";
+@import "components/components.menu";
+@import "components/components.buttons";
+@import "components/components.dropdowns";
+@import "components/components.breadcrumb";
+@import "components/date-range-selector";
+@import "components/components.pagination";
+@import "components/components.inputs";
+@import "components/components.labels";
+@import "components/components.help-block";
+@import "components/components.input-group2";
+@import "components/components.modal";
+@import "components/components.alert-box";
+@import "components/components.tourbus";
+@import "components/components.animation";
+@import "components/components.transition";
+@import "components/components.animations";
+@import "components/components.chart-loader";
+
+/* Utilities
+   ========================================================================= */
+
+/**
+ * Utilities
+ *
+ * High-specificity, very explicit selectors. Overrides and helper classes (e.g. .u-hidden {}).
+ *
+ * Styleguide Framework - Utilities
+ */
+
+$inuit-enable-margins: true;
+$inuit-enable-margins--huge: true;
+$inuit-enable-margins--large: true;
+$inuit-enable-margins--small: true;
+$inuit-enable-margins--tiny: true;
+$inuit-enable-margins--none: true;
+$inuit-enable-paddings: true;
+$inuit-enable-paddings--large: true;
+$inuit-enable-paddings--small: true;
+$inuit-enable-paddings--tiny: true;
+$inuit-enable-paddings--none: true;
+
+$inuit-widths-columns: (
+  1,
+  2,
+  3,
+  4,
+  5,
+  6,
+  7,
+  8,
+  9
+);
+
+@import "../../../node_modules/inuit-headings-trumps/trumps.headings";
+@import "../../../node_modules/inuit-clearfix/trumps.clearfix";
+@import "../../../node_modules/inuit-widths/trumps.widths";
+@import "../../../node_modules/inuit-responsive-widths/trumps.widths-responsive";
+@import "../../../node_modules/inuit-spacing/trumps.spacing";
+@import "trumps/clip-text";
+@import "trumps/type";
+@import "trumps/visibility";
+@import "trumps/align";
+@import "utilities/utilities.stuck";

@@ -1,0 +1,38 @@
+
+/*------------------------------------*\
+    #INPUT GROUP
+\*------------------------------------*/
+
+// -------------------------------------------------
+// DEPRECATED - use `_components.input-group2.scss`
+// -------------------------------------------------
+
+
+/**
+ * Wrap an input to add a prefix symbol (like a dollar sign) to it.
+ *
+ * Example:
+ *
+ * <div class="pc-input__group">
+ *  <div class="pc-input__group__prefix">
+ *  <input type="text">
+ * </div>
+ *
+ */
+
+.pc-input__group {
+  position: relative;
+}
+
+.pc-input__group > input {
+  padding-left: 18px !important;
+}
+
+  .pc-input__group__prefix {
+    color: $pcLabelColor;
+    position: absolute;
+    left: 12px;
+    top: 50%;
+    -ms-transform: translate(-50%, -50%);
+        transform: translate(-50%, -50%);
+  }

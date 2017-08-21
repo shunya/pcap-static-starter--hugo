@@ -1,0 +1,19 @@
+/* ============================================================================
+   CORE -> UTILITIES -> IS-STUCK
+   ========================================================================= */
+
+/**
+ * is-stuck
+ *
+ * `is-stuck` class makes an element to be "stuck" to the viewport and not scroll
+ * with the rest of the content. Think of a sticky header as a usage example.
+ *
+ * You would still need to provide the `top` coordinate for the specific use case.
+ *
+ * Styleguide: Framework - Utilities - is-stuck
+ */
+
+.is-stuck {
+  position: fixed;
+  z-index: $z-index-4--is-stuck;
+}

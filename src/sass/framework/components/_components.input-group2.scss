@@ -1,0 +1,117 @@
+/* ============================================================================
+   CORE -> COMPONENTS -> INPUT GROUP
+   ========================================================================= */
+
+$input-group-button-width: $inuit-base-spacing-unit !default;
+
+/**
+ * Input Group
+ *
+ * To attach extra text or controls to the left or right of an input field,
+ * wrap the elements in an `.pc-input-group` container, then add these classes
+ * to the elements inside:
+ * - `.pc-input-group__field` on the text field.
+ * - `.pc-input-group__label` on a text label.
+ * - `.pc-input-group__button` on a button. Place the button inside this wrapper.
+ *
+ * **Note:** It is important to provide `title` and `aria-label` attributes for
+ *           `.pc-input-group__button` element for accessibility as it doesn't have any label.
+ *
+ * Markup:
+  <div class="pc-input-group {{modifier_class}}">
+    <label class="pc-input-group__label">$</label>
+    <input type="text" class="pc-input-group__field">
+    <button type="button" class="pc-input-group__button"
+            title="Clear" aria-label="Clear">&times;</button>
+  </div>
+ *
+ * .pc-input-group--tiny - Tiny group
+ * .pc-input-group--small - Small group
+ *
+ * Styleguide: Framework - Components - Input Group
+ */
+
+.pc-input-group {
+  box-sizing: border-box;
+  display: inline-block;
+  position: relative;
+}
+
+.pc-input-group__field {
+  @extend %input;
+
+  padding-left: $inuit-base-spacing-unit;
+  padding-right: $input-group-button-width;
+  width: 100%;
+}
+
+.pc-input-group__label {
+  @extend %pc-label;
+
+  position: absolute;
+  left: $inuit-base-spacing-unit--small;
+  top: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.pc-input-group__button {
+  @extend %pc-btn;
+  @extend %pc-btn--stripped;
+
+  padding: 0;
+  position: absolute;
+  right: 0;
+  top: 0;
+  bottom: 0;
+  width: $input-group-button-width;
+}
+
+
+
+
+/* Variations
+   ========================================================================= */
+
+/**
+ * Full-width group
+ */
+.pc-input-group--full {
+  width: 100%;
+}
+
+/**
+ * Small group
+ */
+.pc-input-group--small {
+  .pc-input-group__field {
+    @extend %input--small;
+
+    padding-left: $inuit-base-spacing-unit--small;
+    padding-right: $inuit-base-spacing-unit;
+  }
+
+  .pc-input-group__label {
+    @extend %pc-label--small;
+
+    left: $inuit-base-spacing-unit--tiny;
+  }
+}
+
+
+/**
+ * Tiny group
+ */
+.pc-input-group--tiny {
+  .pc-input-group__field {
+    @extend %input--tiny;
+
+    padding-left: $inuit-base-spacing-unit--small;
+    padding-right: $inuit-base-spacing-unit;
+  }
+
+  .pc-input-group__label {
+    @extend %pc-label--tiny;
+
+    left: $inuit-base-spacing-unit--tiny;
+  }
+}

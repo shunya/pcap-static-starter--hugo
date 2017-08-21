@@ -1,0 +1,205 @@
+/* ------------------------------------*\
+    #ICONS
+\*------------------------------------ */
+
+
+// (?) icon
+.icon__help-circled {
+  @extend %icon;
+
+  width: 12px;
+  height: 12px;
+  background-image: url("/static/img/forecast/icons/toolTipOff.svg");
+
+  &:hover {
+    background-image: url("/static/img/forecast/icons/toolTipOn.svg");
+  }
+}
+
+
+// /!\ icon
+.icon--warning {
+  @extend %icon;
+
+  width: 12px;
+  height: 12px;
+  background-image: url("/static/img/icons/exclamation-triangle.svg");
+}
+
+// Blue conversation popup icon
+.icon--informational {
+  @extend %icon;
+
+  width: 14px;
+  height: 14px;
+  background-image: url("/static/img/icons/informational.svg");
+}
+
+// Orange conversation popup icon
+.icon--input-requested {
+  @extend %icon;
+
+  width: 14px;
+  height: 14px;
+  background-image: url("/static/img/icons/input-requested.svg");
+}
+
+// Date Picker Icons
+.icon-previous-chambray,
+%icon-previous-chambray {
+  @extend %icon;
+
+  width: 14px;
+  height: 14px;
+  background-image: url("/static/img/icons/caret-left--chambray.svg") !important;
+}
+
+.icon-next-chambray,
+%icon-next-chambray {
+  @extend %icon-previous-chambray;
+
+  transform: rotate(180deg);
+}
+
+
+// pencil icon
+.icon-pencil--primary {
+  @extend %icon;
+
+  width: 18px;
+  height: 18px;
+  background-image: url("/static/img/icons/pencil--primary.svg");
+}
+
+.icon-pencil--white {
+  @extend %icon;
+
+  width: 18px;
+  height: 18px;
+  background-image: url("/static/img/icons/pencil--white-v2.svg");
+}
+
+.icon-pencil--gray {
+  @extend %icon;
+
+  width: 18px;
+  height: 18px;
+  background-image: url("/static/img/icons/pencil--gray.svg");
+}
+
+.icon-delete--white {
+  @extend %icon;
+
+  width: 16px;
+  height: 16px;
+  background-image: url("/static/img/icons/delete--white.svg");
+}
+
+.icon-delete--gray {
+  @extend %icon;
+
+  width: 16px;
+  height: 16px;
+  background-image: url("/static/img/icons/delete--gray.svg");
+}
+
+// PCAP logo icon
+.icon-logo {
+  width: 100%;
+  height: 100%;
+}
+
+.icon-logo--white {
+  fill: #fff;
+}
+
+.icon-logo--primary,
+%icon-logo--primary {
+  background-image: url("/static/img/icons/logo--primary.svg");
+}
+
+.icon-logo-text {
+  width: 100%;
+  height: 100%;
+}
+
+.icon-logo-text--white {
+  fill: #fff;
+}
+
+.icon-logo-text--gray {
+  fill: #b9b9b9;
+}
+
+.icon-logo-text--primary {
+  fill: $color--curious-blue;
+}
+
+// todo enrollment gets fresh chrome, this will be depreciated
+.icon-logo-text--primary-old {
+  fill: $color-primary;
+}
+
+.icon-logo-text--slide {
+  width: 60%;
+  height: 64px;
+}
+
+.icon-trash--negative {
+  @extend %icon;
+
+  width: 16px;
+  height: 16px;
+  background-image: url("/static/img/icons/trash--negative.svg");
+}
+
+
+.icon-download--primary {
+  @extend %icon;
+
+  width: 16px;
+  height: 16px;
+  background-image: url("/static/img/icons/download--primary.svg");
+}
+
+
+@keyframes animateInOne {
+  0% { opacity: 0.2; }
+  25% { opacity: 0.2; }
+  50% { opacity: 1; }
+}
+
+@keyframes animateInTwo {
+  0% { opacity: 0.2; }
+  50% { opacity: 0.2; }
+  75% { opacity: 1; }
+}
+
+@keyframes animateInThree {
+  0% { opacity: 0.2; }
+  75% { opacity: 0.2; }
+  90% { opacity: 1; }
+}
+
+.logo__first-bar--animate {
+  animation: animateInOne 1s infinite;
+}
+
+.logo__second-bar--animate {
+  animation: animateInTwo 1s infinite;
+}
+
+.logo__third-bar--animate {
+  animation: animateInThree 1s infinite;
+}
+
+.logo__status {
+  opacity: 0;
+  fill: $color--cabaret;
+  transition: opacity 0.5s linear;
+}
+
+.logo__status--visible {
+  opacity: 1;
+  transition: opacity 0.5s linear;
+}

@@ -1,0 +1,87 @@
+/* --------------- *\
+    #CHART LEGEND
+\* --------------- */
+
+/**
+ * There are two variation of the legend:
+ * - Colored boxes `chart-legend--box`
+ * - Colored lines `chart-legend--line`
+ *
+ * The color of the legend items should be controlled by individual item modifiers.
+ *
+ * Example:
+ *
+    <ul class="chart-legend chart-legend--box">
+      <li class="chart-legend__item chart-legend__item--income">Income</li>
+      <li class="chart-legend__item chart-legend__item--expence">Expence</li>
+    </ul>
+ *
+ */
+
+.chart-legend {
+  @extend %pc-list-inline;
+
+  margin: 0;
+}
+
+.chart-legend__item {
+  position: relative;
+  padding-left: $inuit-base-spacing-unit--small + $inuit-base-spacing-unit--tiny;
+  margin-right: $inuit-base-spacing-unit--small;
+  transition: color 300ms;
+
+  &::before {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    left: 0;
+    content: "";
+    display: inline-block;
+  }
+}
+
+
+// Box Legend
+
+.chart-legend--box {
+  .chart-legend__item::before {
+    width: $inuit-base-spacing-unit--small;
+    height: $inuit-base-spacing-unit--small;
+    border-radius: 2px;
+  }
+}
+
+
+// Box Legend
+
+.chart-legend--line {
+  .chart-legend__item {
+    padding-left: $inuit-base-spacing-unit + $inuit-base-spacing-unit--tiny;
+
+    &::before {
+      border-top-style: solid;
+      border-top-width: 2px;
+      width: $inuit-base-spacing-unit;
+    }
+  }
+}
+
+// Vertical legend
+.chart-legend--vertical {
+  display: block;
+
+  .chart-legend__item {
+    display: block;
+    margin-right: 0;
+  }
+}
+
+// Small
+.chart-legend--small {
+  &.chart-legend--line {
+    .chart-legend__item::before {
+      border-top-width: 1px;
+      width: $inuit-base-spacing-unit--small;
+    }
+  }
+}

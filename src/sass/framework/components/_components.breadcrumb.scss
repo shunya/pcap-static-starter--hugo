@@ -1,0 +1,161 @@
+/* ------------------------------------*\
+    #breadcrumb
+\*------------------------------------ */
+$breadcrumb--spacing: $inuit-base-spacing-unit--small;
+$breadcrumb--spacing--tiny: $inuit-base-spacing-unit--tiny;
+$breadcrumb--font-color: #fff;
+
+$breadcrumb--background: $color--endeavour;
+$breadcrumb--background-current: $color--curious-blue;
+
+$breadcrumb--max-width: 12em;
+
+/**
+ * Breadcrumb
+ *
+ * Your default breadcrumb.
+ *
+ * Some basic rules:
+ * - Leaf nodes should NOT have links.
+ * - All other nodes precluding to the leaf node should ALWAYS have links.
+ *
+ * Markup:
+  <ul class="pc-breadcrumb {{modifier_class}}">
+    <li class="pc-breadcrumb__item"><span class="pc-breadcrumb__node"><span class="pc-breadcrumb__text">All Spending</span></span></li>
+  </ul>
+  <ul class="pc-breadcrumb {{modifier_class}}">
+    <li class="pc-breadcrumb__item"><span class="pc-breadcrumb__node"><span class="pc-breadcrumb__text">All Spending</span></span></li>
+    <li class="pc-breadcrumb__item"><span class="pc-breadcrumb__node"><span class="pc-breadcrumb__text">Restaurants</span></span></li>
+  </ul>
+  <ul class="pc-breadcrumb {{modifier_class}}">
+    <li class="pc-breadcrumb__item"><span class="pc-breadcrumb__node"><span class="pc-breadcrumb__text">All Spending</span></span></li>
+    <li class="pc-breadcrumb__item"><a class="pc-breadcrumb__node" href="javascript:alert('click')"><span class="pc-breadcrumb__text">Restaurants</span></a></li>
+    <li class="pc-breadcrumb__item"><span class="pc-breadcrumb__node"><span class="pc-breadcrumb__text">Italian Sausage is good for the heart</span></span></li>
+    <li class="pc-breadcrumb__item"><span class="pc-breadcrumb__node"><span class="pc-breadcrumb__text">Cheeseboard</span></span></li>
+  </ul>
+ *
+ * .pc-breadcrumb--tiny - tiny breadcrumb
+ *
+ * Styleguide: Framework - Components - Breadcrumbs
+ */
+.#{$inuit-namespace}breadcrumb {
+  margin: 0;
+  overflow: hidden;
+}
+
+.#{$inuit-namespace}breadcrumb__item {
+  display: inline;
+
+  .#{$inuit-namespace}breadcrumb__node {
+    color: $breadcrumb--font-color;
+    display: block;
+    float: left;
+    background-color: $breadcrumb--background;
+    margin: 0 1px 0 0;
+    padding: ($breadcrumb--spacing / 2) ($breadcrumb--spacing / 2) ($breadcrumb--spacing / 2) ($breadcrumb--spacing * 2);
+    position: relative;
+    text-align: center;
+    white-space: nowrap;
+
+    &::before,
+    &::after {
+      content: "";
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+    }
+
+    &::before {
+      border-top: ($breadcrumb--spacing * 2) solid $breadcrumb--background;
+      border-bottom: ($breadcrumb--spacing * 2) solid $breadcrumb--background;
+      border-left: $breadcrumb--spacing solid #fff;
+      left: 0;
+    }
+
+    &::after {
+      border-top: ($breadcrumb--spacing * 2) solid transparent;
+      border-bottom: ($breadcrumb--spacing * 2) solid transparent;
+      border-left: $breadcrumb--spacing solid $breadcrumb--background;
+      right: -$breadcrumb--spacing;
+      z-index: 1;
+    }
+
+    // Must do the ellipsis here to avoid overflow:hidden above.
+    .pc-breadcrumb__text {
+      @extend %u-clip-text;
+
+      display: inline-block;
+      max-width: $breadcrumb--max-width;
+      vertical-align: top;
+    }
+  }
+
+  &:last-child {
+    .#{$inuit-namespace}breadcrumb__node {
+      background-color: $breadcrumb--background-current;
+      padding-right: $breadcrumb--spacing;
+
+      &::before {
+        border-top-color: $breadcrumb--background-current;
+        border-bottom-color: $breadcrumb--background-current;
+      }
+
+      &::after {
+        display: none;
+      }
+    }
+  }
+
+  &:first-child {
+    .#{$inuit-namespace}breadcrumb__node {
+      padding-left: $breadcrumb--spacing;
+
+      &::before {
+        display: none;
+      }
+    }
+  }
+}
+
+/**
+ * Small size variation.
+ */
+.#{$inuit-namespace}breadcrumb--tiny {
+  @extend %micro;
+
+  .#{$inuit-namespace}breadcrumb__item {
+    .#{$inuit-namespace}breadcrumb__node {
+      @extend %pc-btn--small;
+
+      font-weight: bold;
+      margin: 0 $breadcrumb--spacing--tiny / 2;
+
+      &::before,
+      &::after {
+        border-top-width: ($breadcrumb--spacing--tiny * 4);
+        border-bottom-width: ($breadcrumb--spacing--tiny * 4);
+        border-left-width: ($breadcrumb--spacing--tiny * 1.5);
+      }
+
+      &::before {
+        left: -($breadcrumb--spacing--tiny + 1);
+      }
+
+      &::after {
+        right: -($breadcrumb--spacing--tiny + 1);
+      }
+    }
+
+    &:first-child {
+      .#{$inuit-namespace}breadcrumb__node {
+        padding-left: $breadcrumb--spacing--tiny;
+      }
+    }
+
+    &:last-child {
+      .#{$inuit-namespace}breadcrumb__node {
+        padding-right: $breadcrumb--spacing--tiny;
+      }
+    }
+  }
+}

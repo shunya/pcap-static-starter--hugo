@@ -1,0 +1,29 @@
+/* ============================================================================
+   CORE -> COMPONENTS -> ACCOUNT SELECTOR
+   ========================================================================= */
+
+$menu-item--padding-vertical--tiny: $inuit-base-spacing-unit--tiny !default;
+$menu-item--padding-horizontal--tiny: $inuit-base-spacing-unit--tiny !default;
+
+/**
+ * Account Selector
+ *
+ * The Account selector is nothing more than a specialized dropdown menu. Be sure to add menu--right to the main ul
+ *
+ *
+ * Markup:
+ * _accountSelector.html
+ *
+ *
+ * Styleguide: Framework - Components - Account Selector
+ */
+
+
+.menu__item--accounts-list {
+  max-height: 300px;
+  overflow-y: auto;
+
+  .menu__item--group {
+    color: #fff;
+  }
+}

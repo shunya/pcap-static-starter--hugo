@@ -1,0 +1,61 @@
+/**
+ * Labels
+ *
+ * Your default inputs labels suitable for text. Remember to use `for="<input-id>"` to describe the input.
+ * `role="alert"` attribute is used to tell assistive technologies to monitor this node and speak changes, use in error labels.
+ *
+ * Markup:
+    <label class="pc-label {{modifier_class}}">Label example</label>
+ *
+ * .pc-label--tiny - Tiny labels
+ * .pc-label--small - Small labels
+ * .pc-label--large - Large labels
+ * .pc-label--inline - Inline labels
+ *
+ * Styleguide: Framework - Components - Labels
+ */
+
+.pc-label,
+%pc-label {
+  display: block;
+}
+
+.pc-label--tiny,
+%pc-label--tiny {
+  @extend %milli;
+}
+
+.pc-label--small,
+%pc-label--small {
+  @extend %centi;
+}
+
+.pc-label--large {
+  @extend %pc-beta;
+
+  margin-bottom: $inuit-base-spacing-unit--tiny;
+}
+
+.pc-label--inline {
+  display: inline-block;
+}
+
+// Align the checkbox vertically inside of a label.
+.pc-label {
+  [type="checkbox"] {
+    position: relative;
+    bottom: 1px;
+    margin-right: halve($inuit-base-spacing-unit--tiny);
+  }
+
+  [type="radio"] {
+    margin-right: $inuit-base-spacing-unit--tiny;
+  }
+}
+
+.pc-label--tiny,
+.pc-label--small {
+  [type="checkbox"] {
+    bottom: auto;
+  }
+}

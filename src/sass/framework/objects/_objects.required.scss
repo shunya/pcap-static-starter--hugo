@@ -1,0 +1,30 @@
+/*------------------------------------*\
+    #REQUIRED
+\*------------------------------------*/
+
+/**
+ * "Required" marker for label elements.
+ *
+ * Just provide a "Required" title for the label to add
+ * an asterisk next to it:
+ *
+ * <label title="Required">First Name</label>
+ *
+ *
+ * 1. Position the indicator outside of the normal flow
+ *    to make sure that the different `font-size` does not shift
+ *    the main element.
+ * 2. Since the indicator is not in the normal flow, take up the space
+ *    so that the adjecent element don't overlay the indicator.
+ */
+[title="Required"] {
+  position: relative;   /* [1] */
+  padding-right: 8px;   /* [2] */
+  &:after {
+    content: "*";
+    font-size: 16px;
+    margin-left: 1px;
+    position: absolute; /* [1] */
+    color: $color-negative;
+  }
+}

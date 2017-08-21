@@ -1,0 +1,46 @@
+/**
+ * NOTE:  Use `object.toggle` inside of `collapsible__heading`
+ *        to display the toggle indicator.
+ */
+
+// Collapsable panel
+//
+// Panel that collapses an element using bootstrap `collapse` plugin. ** The plugin must be included to make the collapse work. **
+// * Important: Always define `data-toggle="collapse" data-target="<selector>"` and `pc-toggle` class to the toggle element
+// * TIP: If you want the panel collapsed by default, remove the class `in` on the collapsable element targeted by `data-target` attr
+// * TIP 2: By using classes on `data-target` you can target multiple collapse elements with one button.
+//
+// .collapsible--large - A large collapsable item
+//
+// Markup: _components.collapsible.html
+//
+// Styleguide Framework - Components - Collapsable
+.collapsible__heading {
+  padding: $inuit-base-spacing-unit $inuit-base-spacing-unit--large $inuit-base-spacing-unit $inuit-base-spacing-unit;
+  cursor: pointer;
+  position: relative;
+  background-color: hsl(0, 0%, 95%);
+  transition: background-color 0.35s ease;
+
+  &:hover {
+    background-color: hsl(0, 0%, 90%);
+  }
+}
+
+.collapsible__body {
+  padding: $inuit-base-spacing-unit;
+}
+
+/**
+ * Large collapsible item.
+ */
+
+.collapsible--large {
+  .collapsible__heading {
+    padding: $inuit-base-spacing-unit $inuit-base-spacing-unit--huge $inuit-base-spacing-unit $inuit-base-spacing-unit--large;
+  }
+
+  .#{$inuit-namespace}toggle {
+    right: $inuit-base-spacing-unit--large - $inuit-base-spacing-unit / 2;
+  }
+}

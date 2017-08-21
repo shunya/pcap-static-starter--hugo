@@ -1,0 +1,107 @@
+/* ============================================================================
+   TYPE
+   ========================================================================= */
+
+/**
+ * A collection of type related utilities.
+ */
+
+/**
+ * Capitalize a piece of copy. Lowercased word in case of capslock
+ *
+ * <p class="u-text-capitalize">LOREM</p>
+ */
+
+.u-text-capitalize {
+  text-transform: lowercase;
+
+  &::first-letter {
+    text-transform: capitalize;
+  }
+}
+
+/**
+ * Uppercase an entire piece of copy.
+ *
+ * <p class="u-text-capitalize">LOREM</p>
+ */
+
+.u-text-uppercase,
+%u-text-uppercase {
+  text-transform: uppercase;
+}
+
+/**
+ * Center align a piece of copy.
+ * @deprecated Use `u-text-center`
+ *
+ * <p class="u-text-banner">Lorem ipsum</p>
+ */
+
+.u-text-banner,
+%u-text-banner {
+  text-align: center;
+}
+
+// TODO move to `_align.scss`
+
+/**
+ * Center align a piece of copy.
+ *
+ * <p class="u-text-center">Lorem ipsum</p>
+ */
+
+.u-text-center,
+%u-text-center {
+  text-align: center;
+}
+
+/**
+ * Left align a piece of copy.
+ *
+ * <p class="u-text-left">Lorem ipsum</p>
+ */
+
+.u-text-left,
+%u-text-left {
+  text-align: left;
+}
+
+/**
+ * Right align a piece of copy.
+ *
+ * <p class="u-text-right">Lorem ipsum</p>
+ */
+
+.u-text-right,
+%u-text-right {
+  text-align: right;
+}
+
+/**
+ * Contextual colors.
+ *
+ * <p class="u-text-danger">Lorem ipsum</p>
+ * <p class="u-text-primary">Lorem ipsum</p>
+ */
+
+/* stylelint-disable selector-no-qualifying-type */ // allow to apply the style on `a` alements
+.u-text-danger,
+a.u-text-danger:hover,
+a.u-text-danger:focus,
+%u-text-danger {
+  color: $color--negative;
+}
+/* stylelint-enable */
+
+
+.u-text-primary,
+%u-text-primary {
+  color: $color--curious-blue;
+}
+
+
+.u-text-success,
+%u-text-success {
+  color: $color--positive;
+}

@@ -1,0 +1,56 @@
+/* ------------------------------------*\
+    #Help-block
+\*------------------------------------ */
+
+/**
+ * Help-block
+ *
+ * A label to describe the data kind, format input in the control (helpfull description). By default they are `display: block`
+ * but you can get it inline using `help-block--inline` modifier.
+ *
+ * Markup:
+    <label class="help-block {{modifier_class}}">Label example</label>
+ *
+ * .help-block--tiny - Tiny inputs
+ * .help-block--tiny.help-block--inline - Inline help blocks
+ * .help-block--small - Small help blocks
+ * .help-block--large - Large help blocks
+ * .help-block--warning - Warning modifier, this is how a label should look when a validation falls in warning
+ * .help-block--error - Error modifier, this is how a label should look after failing a validation
+ *
+ * Styleguide: Framework - Components - Input-Help block
+ */
+.help-block,
+%help-block {  // stylelint-disable-line selector-type-no-unknown
+  color: $color--gray-chateau;
+  display: block;
+}
+
+.help-block--tiny {
+  @extend %micro;
+}
+
+.help-block--small {
+  @extend %centi;
+}
+
+.help-block--large {
+  @extend %pc-beta;
+}
+
+.help-block--inline {
+  display: inline;
+}
+
+// Color variation for usage on dark backgrounds
+.help-block--invert {
+  color: #fff;
+}
+
+.help-block--warning {
+  color: $color--dark-tangerine;
+}
+
+.help-block--error {
+  color: $color--cabaret;
+}

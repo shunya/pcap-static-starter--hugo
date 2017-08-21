@@ -1,0 +1,110 @@
+/* ============================================================================
+   CORE -> OBJECTS -> OVERLAY
+   ========================================================================= */
+
+/**
+ * An overlay object covers an area in the dom to create
+ * "busy" or "loading" effect.
+ *
+ * Works in combination with `scripts/libs/overlay`
+ */
+
+/**
+ * 1. When `pc-overlay--active` is removed, delay `visibility: hidden`
+ *    till `background-color` transition completes.
+ */
+.pc-overlay {
+  visibility: hidden;
+  z-index: $z-index-4--overlay;
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  cursor: wait;
+  transition:
+    background-color 350ms,
+    visibility 0s linear 350ms; /* [1] */   // stylelint-disable-line time-min-milliseconds
+}
+
+/**
+ * 1. Position the loader element relative to the viewport.
+ */
+.pc-overlay__loader {
+  position: fixed;  /* [1] */
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 345px;
+  min-height: 180px;
+  background-image: url("/static/img/bootstrap/pCapLoader.gif");
+  background-repeat: no-repeat;
+  background-position: 50% 30px;
+  padding: 95px double($inuit-base-spacing-unit) double($inuit-base-spacing-unit);
+  text-align: center;
+  box-sizing: border-box;
+  color: #fff;
+  opacity: 0;
+  background-color: rgba(51, 51, 51, 0.8);
+  transition: opacity 200ms;
+
+  a,
+  a:hover {
+    color: #fff;
+    text-decoration: underline;
+  }
+}
+
+
+
+
+
+/* Modifiers
+   ========================================================================= */
+
+/**
+ * Active
+ *
+ * Makes the overlay visible.
+ *
+ * 1. When `pc-overlay--active` is applied, set `visibility: visible`
+ *    at once so that `background-color` transition has a chance to run.
+ */
+.pc-overlay--active {
+  visibility: visible;
+  background-color: rgba(255, 255, 255, 0.7);
+  transition:
+    background-color 350ms,
+    visibility 0s linear 0s;    /* [1] */   // stylelint-disable-line time-min-milliseconds
+
+  .pc-overlay__loader {
+    opacity: 1;
+  }
+}
+
+/**
+ * Active
+ *
+ * Makes the overlay completely solid.
+ *
+ */
+
+.pc-overlay--solid {
+  background-color: white;
+}
+
+/**
+ * Viewport
+ *
+ * Covers the viewport.
+ */
+.pc-overlay--viewport {
+  position: fixed;
+}
+
+.pc-overlay--modal {
+  background-color: rgba($color--gray, 0.9);
+  position: fixed;
+  cursor: inherit;
+  z-index: $z-index-7--modal-overlay;
+}

@@ -1,0 +1,58 @@
+/* ============================================================================
+   CORE -> OBJECTS -> FONT SIZING
+   ========================================================================= */
+
+$font-size--kilo: 42px !default;
+$font-size--centi: 14px !default;
+$font-size--milli: 12px !default;
+$font-size--micro: 10px !default;
+
+/**
+ * Non-standard font-sizing
+ *
+ * The non-standard font-sizes are defined using SI prefixes.
+ *
+ * #### SASS Variables
+ *
+ * | Variable            | Value |
+ * | :------------------ |:------|
+ * | `$font-size--kilo`  | 42px  |
+ * | `$font-size--centi` | 14px  |
+ * | `$font-size--milli` | 12px  |
+ * | `$font-size--micro` | 10px  |
+ *
+ *
+ * Markup:
+   <div class="kilo">.kilo — Huge text 42px</div>
+   <div class="centi">.centi — Small text 14px</div>
+   <div class="milli">.milli — Tiny text 12px</div>
+   <div class="micro">.micro — Extra-tiny text 10px</div>
+ *
+ * Styleguide: Framework - Typography - Non-standard font-sizing
+ */
+
+
+// NOTE: use mega and giga to follow the pattern
+
+.kilo,
+%kilo {
+  @include inuit-font-size($font-size--kilo);
+}
+
+
+.centi,
+%centi {
+  @include inuit-font-size($font-size--centi);
+}
+
+
+.milli,
+%milli {
+  @include inuit-font-size($font-size--milli);
+}
+
+
+.micro,
+%micro {
+  @include inuit-font-size($font-size--micro);
+}

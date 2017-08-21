@@ -1,0 +1,34 @@
+.pc-alert-box {
+  @extend %pc-box;
+}
+
+.pc-alert-box--error {
+  background-color: $color--cabaret;
+  color: #fff;
+}
+
+.pc-alert-box--warning {
+  background-color: $color--dark-tangerine;
+  color: #fff;
+}
+
+.pc-alert-box--tiny {
+  @extend %pc-box;
+
+  padding: $inuit-base-spacing-unit--tiny;
+}
+
+.pc-alert-box--small {
+  @extend %pc-box;
+
+  padding: $inuit-base-spacing-unit--small;
+}
+
+.pc-alert-box--info {
+  background-color: $color--solitude;
+}
+
+.pc-alert-box__link {
+  color: #fff;
+  text-decoration: underline;
+}

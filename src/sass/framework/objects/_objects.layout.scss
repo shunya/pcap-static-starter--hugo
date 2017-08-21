@@ -1,0 +1,39 @@
+/* ============================================================================
+   CORE -> OBJECTS -> INUIT LAYOUT
+   ========================================================================= */
+
+/**
+ * This is an extension of inuit layout object from `node_modules/inuit-layout/_objects.layout.scss`.
+ * Provides additional modifiers.
+ */
+
+/**
+ * Layouts with 1px gutters.
+ */
+.#{$inuit-layout-namespace}layout--tight,
+%#{$inuit-layout-namespace}layout--tight {
+  margin-left: -1px;
+
+  > .#{$inuit-layout-namespace}layout__item,
+  > %#{$inuit-layout-namespace}layout__item {
+    padding-left: 1px;
+  }
+}
+
+// Ported from Inuitcss 6.0
+// Can be removed once we upgrade.
+
+/**
+ * Stretch all grid items of each row to have an equal-height.
+ * Please be aware that this modifier class doesn't take any effect in IE9 and
+ * below and other older browsers due to the lack of `display: flex` support.
+ */
+
+.#{$inuit-layout-namespace}layout--stretch {
+  display: flex;
+  flex-wrap: wrap;
+
+  > .#{$inuit-layout-namespace}layout__item {
+    display: flex;
+  }
+}

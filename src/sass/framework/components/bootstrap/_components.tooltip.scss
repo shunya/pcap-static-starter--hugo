@@ -1,0 +1,139 @@
+/*------------------------------------*\
+    #TOOLTIP
+\*------------------------------------*/
+
+/**
+ * Modification of Bootstrap tooltip component.
+ * Required by JS component `scripts/libs/vendor/bootstrap/tooltip.js`
+ */
+
+$tooltip-bg: #3b8fe1;
+$tooltip-arrow-width: 14px;
+$zindex-tooltip: 1030;
+
+.tooltip {
+  position: absolute;
+  z-index: $zindex-tooltip;
+  display: block;
+  visibility: visible;
+  font-size: $font-size--milli;
+  line-height: 1.4;
+  opacity: 0;
+
+  &.in     { opacity: 1; }
+  &.top    { margin-top:  -3px; padding: $tooltip-arrow-width 0; }
+  &.right  { margin-left:  3px; padding: 0 $tooltip-arrow-width; }
+  &.bottom { margin-top:   3px; padding: $tooltip-arrow-width 0; }
+  &.left   { margin-left: -3px; padding: 0 $tooltip-arrow-width; }
+}
+
+// Wrapper for the tooltip content
+.tooltip-inner {
+  max-width: 240px;
+  padding: $inuit-base-spacing-unit--small $inuit-base-spacing-unit;
+  text-align: left;
+  text-decoration: none;
+  font-weight: 300;
+  background-color: $tooltip-bg;
+  color: #fff;
+  white-space: normal;
+  box-shadow: 3px 3px 20px -3px rgba(0,0,0,0.75);
+}
+
+// Arrows
+.tooltip-arrow {
+  position: absolute;
+  width: 0;
+  height: 0;
+  border-color: transparent;
+  border-style: solid;
+}
+.tooltip {
+  &.top .tooltip-arrow {
+    bottom: 0;
+    left: 50%;
+    margin-left: -$tooltip-arrow-width;
+    border-width: $tooltip-arrow-width $tooltip-arrow-width 0;
+    border-top-color: $tooltip-bg;
+  }
+  &.top-left .tooltip-arrow {
+    bottom: 0;
+    left: $tooltip-arrow-width;
+    border-width: $tooltip-arrow-width $tooltip-arrow-width 0;
+    border-top-color: $tooltip-bg;
+  }
+  &.top-right .tooltip-arrow {
+    bottom: 0;
+    right: $tooltip-arrow-width;
+    border-width: $tooltip-arrow-width $tooltip-arrow-width 0;
+    border-top-color: $tooltip-bg;
+  }
+  &.right .tooltip-arrow {
+    top: 50%;
+    left: 0;
+    margin-top: -$tooltip-arrow-width;
+    border-width: $tooltip-arrow-width $tooltip-arrow-width $tooltip-arrow-width 0;
+    border-right-color: $tooltip-bg;
+  }
+  &.left .tooltip-arrow {
+    top: 50%;
+    right: 0;
+    margin-top: -$tooltip-arrow-width;
+    border-width: $tooltip-arrow-width 0 $tooltip-arrow-width $tooltip-arrow-width;
+    border-left-color: $tooltip-bg;
+  }
+  &.bottom .tooltip-arrow {
+    top: 0;
+    left: 50%;
+    margin-left: -$tooltip-arrow-width;
+    border-width: 0 $tooltip-arrow-width $tooltip-arrow-width;
+    border-bottom-color: $tooltip-bg;
+  }
+  &.bottom-left .tooltip-arrow {
+    top: 0;
+    left: $tooltip-arrow-width;
+    border-width: 0 $tooltip-arrow-width $tooltip-arrow-width;
+    border-bottom-color: $tooltip-bg;
+  }
+  &.bottom-right .tooltip-arrow {
+    top: 0;
+    right: $tooltip-arrow-width;
+    border-width: 0 $tooltip-arrow-width $tooltip-arrow-width;
+    border-bottom-color: $tooltip-bg;
+  }
+}
+
+
+// white modifier
+
+.tooltip--white {
+  .tooltip-inner {
+    color: $inuit-base-text-color;
+    background-color: #fff;
+  }
+
+  &.top .tooltip-arrow {
+    border-top-color: #fff;
+  }
+  &.top-left .tooltip-arrow {
+    border-top-color: #fff;
+  }
+  &.top-right .tooltip-arrow {
+    border-top-color: #fff;
+  }
+  &.right .tooltip-arrow {
+    border-right-color: #fff;
+  }
+  &.left .tooltip-arrow {
+    border-left-color: #fff;
+  }
+  &.bottom .tooltip-arrow {
+    border-bottom-color: #fff;
+  }
+  &.bottom-left .tooltip-arrow {
+    border-bottom-color: #fff;
+  }
+  &.bottom-right .tooltip-arrow {
+    border-bottom-color: #fff;
+  }
+}

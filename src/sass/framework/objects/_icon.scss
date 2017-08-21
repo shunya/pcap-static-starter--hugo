@@ -1,0 +1,28 @@
+/*------------------------------------*\
+    #ICON
+\*------------------------------------*/
+
+/**
+ * Base Icon object.
+ *
+ * An icon requires a base `icon` class and individual icon class which defines the `background-image`.
+ *
+ * ###Don't mix with other components.
+ * Icon classes cannot be directly combined with other components.
+ * They should not be used along with other classes on the same element.
+ * Instead, add a nested <span> and apply the icon classes to the <span>.
+ */
+
+// 1. TODO figure out if there are enough use cases
+//    to define height and width as $inuit-base-spacing-unit.
+//    - Advisor page
+
+.icon,
+%icon {
+  // height: $inuit-base-spacing-unit;  /* [1] */
+  // width: $inuit-base-spacing-unit;
+  display: inline-block;
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center;
+}

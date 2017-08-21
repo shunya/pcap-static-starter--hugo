@@ -1,0 +1,420 @@
+/* ------------------------------------*\
+    #button
+\*------------------------------------ */
+
+$ps-btn--disabled-opacity: 0.5;
+
+// Default button
+$pc-btn--background: $color--endeavour;
+$pc-btn--background-hover: $color--prussian-blue;
+$pc-btn--background-active: $color--curious-blue;
+$pc-btn--font-color: #fff;
+
+// Primary button
+$pc-btn-primary--background: $color--dark-tangerine;
+$pc-btn-primary--background-hover: $color--mango-tango;
+$pc-btn-primary--background-active: $color--tangerine-yellow;
+$pc-btn-primary--font-color: #fff;
+
+// danger button
+$pc-btn-danger--background: $color--cabaret;
+$pc-btn-danger--background-hover: $color--cardinal;
+$pc-btn-danger--background-active: $color--froly;
+$pc-btn-danger--font-color: #fff;
+
+// bordered button
+$pc-btn-bordered--background: $color--curious-blue;
+$pc-btn-bordered--background-hover: $color--solitude;
+$pc-btn-bordered--border-color: $color--endeavour;
+$pc-btn-bordered--border-color-hover: $color--endeavour;
+$pc-btn-bordered--border-color-active: $color--curious-blue;
+$pc-btn-bordered--font-color: $color--endeavour;
+$pc-btn-bordered--font-color-active: #fff;
+
+// transparent button
+$pc-btn-transparent--background: rgba(#fff, 0.1);
+$pc-btn-transparent--background-hover: rgba(#fff, 0.3);
+$pc-btn-transparent--background-active: rgba(#fff, 0.4);
+$pc-btn-transparent--font-color: #fff;
+
+// stripped button
+$pc-btn-stripped--font-color: $color--endeavour;
+$pc-btn-stripped--font-color-hover: $color--arsenic;
+
+// bare button
+$pc-btn-bare--border-color-hover: $color--endeavour;
+$pc-btn-bare--border-color-active: $color--endeavour;
+$pc-btn-bare--font-color: $color--endeavour;
+
+/**
+ * Buttons
+ *
+ * Your default button suitable for clicking.
+ * It's important to use the right tag because buttons can be used for many purposes.
+ * - Use the `<a>` tag if the button is a link to another page, or a link to an anchor within a page.
+ *   Generally anchors don't require JavaScript to work.
+ *   If the `<a>` elements are used to act as buttons – triggering in-page functionality,
+ *   rather than navigating to another document or section within the current page – they should also be given an appropriate `role="button"`.
+ * - Use the `<button>` tag if the button performs an action that changes something on the current page. `<button>` elements almost always require JavaScript to function.
+ *
+ * **NOTE:** Always add the attribute `type="button"` to `<button>` elements.
+ * The exception to this rule is when the button submits a form, in which case you use `type="submit"`.
+ *
+ * Markup:
+    <button class="pc-btn {{modifier_class}}"> Use me </button>
+    <!-- Use pseudo class only for the style guide purpose, in the real world those would be :active and :hover pseudo-classes -->
+    <button class="pc-btn {{modifier_class}} pseudo-class-active">I'm Active</button>
+    <button class="pc-btn {{modifier_class}} pseudo-class-hover">I'm hovered</button>
+    <button class="pc-btn {{modifier_class}}" disabled>I'm disabled</button>
+ *
+ * .pc-btn--primary - Standard primary button. Try `":hover"` and `":active"` states live in `"use me"` button
+ * .pc-btn--danger - Danger button, suitable for remove, alerts and any extreme action. Try `":hover"` and `":active"` states live in `"use me"` button
+ * .pc-btn--bordered - Bordered button, transparent background. Try `":hover"` and `":active"` states live in `"use me"` button
+ * .pc-btn--transparent - This button will have a white background with .1 opacity and white text so it can be placed over all kinds of backgrounds
+ * .pc-btn--stripped - Button with the stripped out border. The primary use-case for this variation is a clickable icon.
+ * .pc-btn--bare - Minimal transparent button, borderless when not active or hovered.
+ * .pc-btn--tiny - Tiny button
+ * .pc-btn--small - Small button
+ * .pc-btn--large - Large button
+ * .pc-btn--danger.pc-btn--large - Large danger button, you can combine classes to compose your Buttons !!
+ * .disabled - Disabled class, useful to disable elements that can't be disabled like `a` and `div`.
+ *
+ * Styleguide: Framework - Components - Buttons
+ */
+.pc-btn {
+  background: $pc-btn--background;
+  border-color: transparent;
+  color: $pc-btn--font-color;
+  text-decoration: none;
+  user-select: none;
+  // todo delete after we get rid of button in _tags.scss
+  border-radius: 0;
+
+  &:focus {
+    color: $pc-btn--font-color;
+    text-decoration: none;
+  }
+
+  &:hover {
+    background: $pc-btn--background-hover;
+    border-color: transparent;
+    color: $pc-btn--font-color;
+    text-decoration: none;
+  }
+
+  &:active,
+  &.is-active {
+    background: $pc-btn--background-active;
+    border-color: transparent;
+    color: $pc-btn--font-color;
+    text-decoration: none;
+  }
+
+  &:disabled,
+  &.disabled {
+    opacity: $ps-btn--disabled-opacity;
+    color: $pc-btn--font-color;
+    text-decoration: none;
+
+    &:hover {
+      background: $pc-btn--background;
+      border-color: transparent;
+      color: $pc-btn--font-color;
+      text-decoration: none;
+    }
+  }
+}
+
+.pc-btn + .pc-btn {
+  margin-left: $inuit-base-spacing-unit--small;
+}
+
+
+
+/* Variations
+   ========================================================================= */
+
+/**
+ * Primary button.
+ */
+.pc-btn--primary {
+  background: $pc-btn-primary--background;
+  color: $pc-btn-primary--font-color;
+
+  &:focus {
+    color: $pc-btn-primary--font-color;
+  }
+
+  &:hover {
+    background: $pc-btn-primary--background-hover;
+    color: $pc-btn-primary--font-color;
+  }
+
+  &:active,
+  &.is-active {
+    background: $pc-btn-primary--background-active;
+    color: $pc-btn-primary--font-color;
+  }
+
+  &:disabled,
+  &.disabled {
+    color: $pc-btn-primary--font-color;
+
+    &:hover {
+      background: $pc-btn-primary--background;
+      color: $pc-btn-primary--font-color;
+    }
+  }
+}
+
+
+/**
+ * Danger button.
+ */
+.pc-btn--danger {
+  background: $pc-btn-danger--background;
+  color: $pc-btn-danger--font-color;
+
+  &:focus {
+    color: $pc-btn-danger--font-color;
+  }
+
+  &:hover {
+    background: $pc-btn-danger--background-hover;
+    color: $pc-btn-danger--font-color;
+  }
+
+  &:active,
+  &.is-active {
+    background: $pc-btn-danger--background-active;
+    color: $pc-btn-danger--font-color;
+  }
+
+  &:disabled,
+  &.disabled {
+    color: $pc-btn-danger--font-color;
+
+    &:hover {
+      background: $pc-btn-danger--background;
+      color: $pc-btn-danger--font-color;
+    }
+  }
+}
+
+
+/**
+ * Bordered button.
+ */
+.pc-btn--bordered {
+  background: transparent;
+  border: $inuit-btn-border-width solid $pc-btn-bordered--border-color;
+  color: $pc-btn-bordered--font-color;
+
+  &:focus {
+    color: $pc-btn-bordered--font-color;
+  }
+
+  &:hover {
+    border-color: $pc-btn-bordered--border-color-hover;
+    background: $pc-btn-bordered--background-hover;
+    color: $pc-btn-bordered--font-color;
+  }
+
+  &:active,
+  &.is-active {
+    border-color: $pc-btn-bordered--border-color-active;
+    background-color: $pc-btn-bordered--background;
+    color: $pc-btn-bordered--font-color-active;
+  }
+
+  &:disabled,
+  &.disabled {
+    color: $pc-btn-bordered--font-color;
+
+    &:hover {
+      color: $pc-btn-bordered--font-color;
+      background: transparent;
+      border-color: $pc-btn-bordered--border-color;
+    }
+  }
+}
+
+/**
+ * Transparent button.
+ */
+.pc-btn--transparent {
+  background: $pc-btn-transparent--background;
+  color: $pc-btn-transparent--font-color;
+
+  &:focus {
+    color: $pc-btn-transparent--font-color;
+  }
+
+  &:hover {
+    background: $pc-btn-transparent--background-hover;
+    color: $pc-btn-transparent--font-color;
+  }
+
+  &:active,
+  &.is-active {
+    background: $pc-btn-transparent--background-active;
+    color: $pc-btn-transparent--font-color;
+  }
+
+  &:disabled,
+  &.disabled {
+    color: $pc-btn-transparent--font-color;
+
+    &:hover {
+      background: $pc-btn-transparent--background;
+      color: $pc-btn-transparent--font-color;
+    }
+  }
+}
+
+
+/**
+ * Stripped button.
+ * Button with the stripped out border. The primary use-case for this variation is a clickable icon.
+ */
+.pc-btn--stripped,
+%pc-btn--stripped {
+  background: transparent;
+  border: 1px solid transparent;
+  color: $pc-btn-stripped--font-color;
+
+  &:focus {
+    color: $pc-btn-stripped--font-color;
+  }
+
+  &:hover {
+    border-color: transparent;
+    background: transparent;
+    color: $pc-btn-stripped--font-color-hover;
+  }
+
+  &:active,
+  &.is-active {
+    border-color: transparent;
+    background-color: transparent;
+    color: $pc-btn-stripped--font-color;
+  }
+
+  &:disabled {
+    color: $pc-btn-stripped--font-color;
+
+    &:hover {
+      color: $pc-btn-stripped--font-color;
+      background: transparent;
+      border-color: transparent;
+    }
+  }
+}
+
+/**
+ * Bare button.
+ * Transparent button with a border that appears only on hover or when active.
+ */
+.pc-btn--bare,
+%pc-btn--bare {
+  background: transparent;
+  border: 1px solid transparent;
+  color: $pc-btn-bare--font-color;
+
+  &:focus {
+    color: $pc-btn-bare--font-color;
+  }
+
+  &:hover {
+    color: $pc-btn-bare--font-color;
+    border-color: $pc-btn-bare--border-color-hover;
+    background: transparent;
+  }
+
+  &:active,
+  &.is-active {
+    color: $pc-btn-bare--font-color;
+    border-color: $pc-btn-bare--border-color-active;
+    background-color: transparent;
+  }
+
+  &:disabled {
+    color: $pc-btn-bare--font-color;
+
+    &:hover {
+      color: $pc-btn-bare--font-color;
+      background: transparent;
+      border-color: transparent;
+    }
+  }
+}
+
+/**
+ * Tiny size variation.
+ *
+ * 1. Extends same paddings as the small button.
+ */
+.pc-btn--tiny {
+  @extend %pc-btn--small; /* [1] */
+  @extend %micro;
+
+  font-weight: bold;
+}
+
+/**
+ * Small size variation.
+ */
+.pc-btn--small {
+  @extend %centi;
+}
+
+.pc-btn--small + .pc-btn--small,
+.pc-btn--tiny + .pc-btn--tiny {
+  margin-left: $inuit-base-spacing-unit--tiny;
+}
+
+
+/**
+ * Large size variation.
+ */
+.pc-btn--large {
+  @extend %pc-beta;
+}
+
+/**
+ * Toggle Buttons
+ *
+ * These buttons receive a special padding on the right-hand side. This provides the space necessary
+ * for a toggle icon to be placed within it.
+ *
+ * Markup:
+    <button class="pc-btn pc-btn--toggle" type="button">
+      Toggle Button
+      <div class="pc-toggle pc-toggle--caret pc-toggle--caret-white pc-toggle--small"></div>
+    </button>
+    <button class="pc-btn pc-btn--small pc-btn--toggle" type="button">
+      Toggle Button
+      <div class="pc-toggle pc-toggle--caret pc-toggle--caret-white pc-toggle--small"></div>
+    </button>
+    <button class="pc-btn pc-btn--tiny pc-btn--toggle" type="button">
+      Toggle Button
+      <div class="pc-toggle pc-toggle--caret pc-toggle--caret-white pc-toggle--tiny"></div>
+    </button>
+ *
+ * Styleguide: Framework - Components - Buttons - Toggle Buttons
+ */
+
+/**
+ * Toggle button.
+ */
+.pc-btn--toggle {
+  padding-right: $inuit-base-spacing-unit;
+  position: relative;
+  z-index: 1;
+}
+
+.pc-btn--toggle.pc-btn--tiny {
+  padding-right: $inuit-base-spacing-unit--tiny * 3;
+  position: relative;
+  z-index: 1;
+}

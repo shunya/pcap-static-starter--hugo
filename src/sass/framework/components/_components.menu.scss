@@ -1,0 +1,263 @@
+/* ============================================================================
+   CORE -> COMPONENTS -> MENU
+   ========================================================================= */
+
+$menu-vertical--max-width: 280px !default;
+$menu-item--padding-vertical: $inuit-base-spacing-unit--small !default;
+$menu-item--padding-horizontal: $inuit-base-spacing-unit--small !default;
+
+$menu-item--padding-vertical--tiny: $inuit-base-spacing-unit--tiny !default;
+$menu-item--padding-horizontal--tiny: $inuit-base-spacing-unit--tiny !default;
+
+/**
+ * Menu
+ *
+ * The menu is a flexible, all-purpose component for navigation.
+ * It is horizontally oriented by default, but can be oriented vertically
+ * using `.menu--vertical` modifier.
+ *
+ * By default `.menu--submenu` class will show the dropdown menu positioned at left using `left: 0`. Use the
+ * modifier `.menu--submenu-right` to make the submenu show up at right.
+ *
+ * To add a sub-menu, add another menu with `.menu--submenu` modifier into
+ * one of menu items.
+ * Please note, that `.menu--submenu` doesn't inherit the color and background
+ * color from the parent menu. The color modifier needs to be provided.
+ *
+ * A menu item can be activated (highlighted) with `.menu-item--active`
+ * modifier class.
+ *
+ * ##### Text
+ * Because the padding of the menu item is applied to the `<a>`,
+ * if you try to add an item that's text only, it will be misaligned.
+ * To get around this, add the class `.menu__item--box` to any `<li>` that doesn't have a link inside of it.
+ *
+ * Markup:
+    <ul class="menu {{modifier_class}}">
+      <li class="menu__item menu__item--box">Text Item</li>
+      <li class="menu__item"><a href="#" class="menu__action">One</a></li>
+      <li class="menu__item">
+        <a href="#" class="menu__action">Two</a>
+        <ul class="menu menu--submenu menu--vertical {{modifier_class}}">
+          <li class="menu__item"><a href="#" class="menu__action">Lorem ipsum dolor sit amet, consectetur adipisicing elit.</a></li>
+          <li class="menu__item"><a href="#" class="menu__action">Sub Two</a></li>
+          <li class="menu__item"><a href="#" class="menu__action">Sub Three</a></li>
+          <li class="menu__item"><a href="#" class="menu__action">Sub Four</a></li>
+        </ul>
+      </li>
+      <li class="menu__item"><a href="#" class="menu__action">Three</a></li>
+      <li class="menu__item menu__item--active"><a href="#" class="menu__action">Four (active)</a></li>
+    </ul>
+ *
+ * .menu--vertical - The vertically oriented menu.
+ * .menu--bordered - Adds a border to the menu. Used primarily in dropdowns.
+ * .menu--primary - The primary application menu.
+ *
+ * Styleguide: Framework - Components - Menu
+ */
+
+.menu {
+  @extend %pc-list-inline;
+}
+
+.menu__item {
+  position: relative;
+  white-space: nowrap;
+  vertical-align: middle;
+
+  &:hover {
+    .menu--submenu {
+      visibility: visible;
+      opacity: 1;
+      box-shadow: 0 1px 6px 0 rgba($color--arsenic, 0.4);
+    }
+  }
+
+  &.hidden {
+    display: none;
+  }
+}
+
+.menu__action {
+  @extend %u-clip-text;
+
+  display: block;
+  padding: $menu-item--padding-vertical $menu-item--padding-horizontal;
+  user-select: none;
+}
+
+.menu__header,
+.menu__footer {
+  background-color: $color--curious-blue;
+  color: #fff;
+  font-weight: bold;
+}
+
+.menu__footer {
+  padding: $inuit-base-spacing-unit--tiny;
+}
+
+/**
+ * Menu Item Group
+ *
+ * 1. Adds emphasis to the menu item, appears as a header of group of menu items
+ *
+ */
+
+.menu__item--group {
+  font-weight: bold;
+  background-color: $color--endeavour;
+}
+
+.menu__item--box {
+  @extend %u-clip-text;
+
+  padding: $menu-item--padding-vertical $menu-item--padding-horizontal;
+}
+
+/**
+ * Sub-Menu
+ *
+ * 1. Provide the default color explicitly because the white color gets inherited
+ *    from the parent menu.
+ */
+
+.menu--submenu {
+  visibility: hidden;
+  opacity: 0.5;
+  position: absolute;
+  top: 100%;
+  left: 0;
+  color: $inuit-base-text-color;    /* [1] */
+  background-color: #fff;
+  transition: opacity 100ms;
+  z-index: $z-index-2--menu-submenu;
+}
+
+
+
+
+/* Variations
+   ========================================================================= */
+
+/**
+ * Creates a theme variation of the menu.
+ *
+ * $menu--background              - The background color of the menu.
+ * $menu-item--background-active  - The background color of the active item.
+ * $menu-item--color              - The text color of the item (optional).
+ * $menu-item--color-active       - The text color of the active item (optional, defaults to $menu-item--color).
+ */
+@mixin menu-theme($menu--background, $menu-item--background-active, $menu-item--color: "", $menu-item--color-selected: "", $menu-item--color-active: $menu-item--color) {
+  @if $menu-item--color != "" {
+    color: $menu-item--color;
+  }
+
+  background-color: $menu--background;
+
+  > .menu__item > .menu__action {
+    text-decoration: none;
+
+    @if $menu-item--color != "" {
+      color: $menu-item--color;
+    }
+  }
+
+  > .menu__item:hover > .menu__action,
+  > .menu__item--active > .menu__action {
+    @if $menu-item--color-active != $menu-item--color {
+      color: $menu-item--color-active;
+    }
+
+    background-color: $menu-item--background-active;
+    text-decoration: none;
+  }
+
+  > .menu__item--selected > .menu__action,
+  > .selected > .menu__action { /* for bootstrap dropdown */
+    @if $menu-item--color-selected != $menu-item--color {
+      color: $menu-item--color-selected;
+    }
+
+    text-decoration: none;
+    font-weight: bold;
+  }
+
+  .menu__item--disabled {
+    color: rgba($menu-item--color, 0.5);
+  }
+}
+
+
+/**
+ * Simple bordered menu.
+ */
+.menu--bordered {
+  box-shadow: 0 1px 4px 0 rgba($color--arsenic, 0.5);
+
+  @include menu-theme(
+    $menu--background: #fff,
+    $menu-item--color: $color--endeavour,
+    $menu-item--color-active: $color--endeavour,
+    $menu-item--background-active: $color--ghost-white,
+    $menu-item--color-selected: $color--curious-blue
+  );
+}
+
+
+/**
+ * Primary application menu
+ */
+.menu--primary {
+  @include menu-theme(
+    $menu--background: $color--st-tropaz,
+    $menu-item--color: #fff,
+    $menu-item--background-active: $color--curious-blue
+  );
+}
+
+/**
+ * Menu with micro font. Most all dropdown menus.
+ */
+
+.menu--tiny {
+  @include inuit-font-size($font-size--micro, 1.6);
+
+  .menu__item--box {
+    padding: $menu-item--padding-vertical--tiny $menu-item--padding-horizontal--tiny;
+  }
+
+  .menu__action {
+    padding: $menu-item--padding-vertical--tiny $menu-item--padding-horizontal--tiny;
+  }
+}
+
+
+/**
+ * Vertical menu
+ *
+ * 1. Keep the width of the content.
+ */
+.menu--vertical {
+  display: inline-block; /* [1] */
+  max-width: $menu-vertical--max-width;
+
+  > li,
+  .menu__item {
+    display: block;
+  }
+
+  .menu--submenu {
+    top: 0;
+    left: 100%;
+  }
+}
+
+.menu--submenu-right {
+  right: 0;
+  left: auto;
+}
+
+.menu--no-max-width {
+  max-width: none;
+}

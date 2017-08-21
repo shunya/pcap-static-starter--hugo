@@ -1,0 +1,35 @@
+/* ------------------------------------ *\
+    #SPINNER
+\* ------------------------------------ */
+
+/**
+ * Provides modifiers for `spinkit` objects.
+ */
+
+.sk-circle--large {
+  width: $inuit-base-spacing-unit--large;
+  height: $inuit-base-spacing-unit--large;
+}
+
+.sk-circle--small {
+  width: $inuit-base-spacing-unit--small;
+  height: $inuit-base-spacing-unit--small;
+}
+
+.sk-circle--primary {
+  .sk-child::before {
+    background-color: $color--prussian-blue;
+  }
+}
+
+.sk-circle--secondary {
+  .sk-child::before {
+    background-color: $color--link-water;
+  }
+}
+
+.sk-circle--white {
+  .sk-child::before {
+    background-color: #fff;
+  }
+}

@@ -1,0 +1,94 @@
+/* ============================================================================
+   CORE -> COMPONENTS -> PAGINATION
+   ========================================================================= */
+
+/**
+ * Pagination
+ *
+ * Provide pagination control for multi-page content.
+ *
+ * ### Accessibility
+ * The pagination component should be wrapped in a `<nav>` element to identify it
+ * as a navigation section to screen readers and other assistive technologies.
+ * In addition, as a page is likely to have more than one such navigation section already
+ * (such as the primary navigation in the header, or a sidebar navigation), it is advisable
+ * to provide a descriptive `aria-label` for the `<nav>` which reflects its purpose.
+ * For example, if the pagination component is used to navigate between a set of search results,
+ * an appropriate label could be `aria-label="Search results pages"`.
+ *
+ * Markup:
+  <nav class="pc-pagination" aria-label="...">
+    <button type="button" class="pc-pagination__button pc-pagination__button--skip-back" aria-label="Go to first page" disabled></button>
+    <button type="button" class="pc-pagination__button pc-pagination__button--back" aria-label="Go to previous page" disabled></button>
+    <span class="pc-pagination__text">1&ndash;10 of 100</span>
+    <button type="button" class="pc-pagination__button pc-pagination__button--forward" aria-label="Go to next page"></button>
+    <button type="button" class="pc-pagination__button pc-pagination__button--skip-forward" aria-label="Go to last page"></button>
+  </nav>
+ *
+ *
+ * Styleguide: Framework - Components - Pagination
+ */
+
+
+.pc-pagination {
+  display: flex;
+  align-items: center;
+}
+
+.pc-pagination--horizontally-centered {
+  justify-content: center;
+}
+
+.pc-pagination__text {
+  @extend %milli;
+
+  color: $color--arsenic;
+  margin-left: $inuit-base-spacing-unit--tiny;
+  margin-right: $inuit-base-spacing-unit--tiny;
+}
+
+/**
+ * 1. Overrides the radius defined in `_tags.scss`.
+ *    TODO remove both after redesign.
+ */
+.pc-pagination__button {
+  @extend %pc-btn;
+
+  border-radius: 0; /* [1] */
+  background-color: transparent;
+  background-position: center;
+  background-repeat: no-repeat;
+  border: 1px solid transparent;
+  box-sizing: border-box;
+  height: $inuit-base-spacing-unit;
+
+  &:hover {
+    border-color: $color--endeavour;
+  }
+
+  &:disabled {
+    opacity: 0.5;
+
+    &:hover {
+      border-color: transparent;
+    }
+  }
+}
+
+.pc-pagination__button--back {
+  background-image: url("/static/img/icons/pagination.svg");
+  transform: rotate(180deg);
+}
+
+.pc-pagination__button--skip-back {
+  background-image: url("/static/img/icons/pagination--skip.svg");
+  transform: rotate(180deg);
+}
+
+.pc-pagination__button--forward {
+  background-image: url("/static/img/icons/pagination.svg");
+}
+
+.pc-pagination__button--skip-forward {
+  background-image: url("/static/img/icons/pagination--skip.svg");
+}

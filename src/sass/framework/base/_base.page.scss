@@ -1,0 +1,25 @@
+@import url("//fonts.googleapis.com/css?family=Open+Sans:300,400,400i,700,700i"); /* disabled since not a partial import */ // stylelint-disable-line scss/partial-no-import
+
+$font-family: "Open Sans", sans-serif !default;
+
+/**
+ * 1. Set explicit height in order `height` with a percentage to work on body. [2]
+ * 2. Sticky footer implementation.
+ */
+html {
+  font-family: $font-family;
+
+  // Temporary disable global scrollbar coming from `inuit-page/base.page`.
+  // There is a scrollbar defined on `#menuContainer` level, so we don't want
+  // to create the second one on the page level.
+  //
+  // TODO: Revisit app page layout. We should eventually remove the scrollbar
+  // from `#menuContainer`
+  overflow-y: auto;
+  height: 100%;   /* [1] */
+}
+
+body {
+  height: 100%;  /* [2] */
+  position: relative;
+}

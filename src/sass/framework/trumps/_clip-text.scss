@@ -1,0 +1,25 @@
+/*------------------------------------*\
+    #CLIP TEXT
+\*------------------------------------*/
+
+
+/**
+ * A utility class to truncate the text at the limit of the content area and display
+ * an ellipsis ('…', U+2026 HORIZONTAL ELLIPSIS) to represent clipped text.
+ *
+ *
+ * The ellipsis is displayed inside the content area, decreasing the amount of text displayed.
+ * If there is not enough space to display the ellipsis, it is clipped.
+ *
+ *
+ * <div class="clip-text">Lorem ipsum</div>
+ *
+ */
+
+
+.u-clip-text,
+%u-clip-text {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}

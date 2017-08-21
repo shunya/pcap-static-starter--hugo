@@ -1,0 +1,17 @@
+<nav class="nav nav--dark">
+    <div class="container">
+        <div class="l-spaced l-spaced--flush">
+            <ul class="menu menu--primary">
+                <li class="menu__item"><a class="menu__action" href="{{ .Site.BaseURL }}">Home</a></li>
+            </ul>
+            <ul class="menu menu--primary">
+                    {{ $currentPage := . }}
+                {{ range .Site.Menus.main }}
+                    <li class="menu__item {{if $currentPage.HasMenuCurrent "main" . }}active{{end}}">
+                        <a class="menu__action" href="{{.URL}}">{{ .Name }}</a>
+                    </li>
+                {{end}}
+            </ul>
+        </div>
+    </div>
+</nav>

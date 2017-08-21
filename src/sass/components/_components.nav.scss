@@ -1,0 +1,126 @@
+/* ============================================================================
+   COMPONENTS -> NAV
+   ========================================================================= */
+
+   $nav-height: 48px !default;
+   $nav-secondary-height: 61px !default;
+   $nav-secondary-padding--vertical: $inuit-padding--small;
+   $nav-secondary-padding--horizontal: $inuit-padding--small;
+   
+   /**
+    * Nav
+    *
+    * Styleguide Components - Nav
+    */
+   
+   
+   /**
+    * Main navigation
+    *
+    * The component is a simple horizontal bar (or container) providing a background
+    * color and stuck to the top of the viewport.
+    *
+    * The layout of the main navigation is provided by children components.
+    *
+    * Markup:
+       <nav class="nav {{modifier_class}}">
+         <div class="main-container">
+           <div class="main-container__inner">
+             <div class="l-spaced l-spaced--flush">
+               <div class="menu__container">
+                   <ul class="menu menu--primary">
+                       <li class="menu__item">
+                           <a href="/page/login/app#/dashboard" class="menu__action">Overview</a>
+                       </li>
+                       <li class="menu__item">
+                           <a href="/page/login/app#/cash-flow" class="menu__action">Banking</a>
+                       </li>
+                   </ul>
+               </div>
+             </div>
+           </div>
+         </div>
+       </nav>
+    *
+    * .nav--dark - The dark bar is only used for client users
+    *
+    * Styleguide Components - Nav - Main
+    */
+   .nav {
+     background-color: $color--st-tropaz;
+     position: fixed;
+     top: 0;
+     width: 100%;
+     z-index: $z-index-5--nav-main;
+   }
+   
+   .nav--dark {
+     background-color: $color--arsenic;
+   
+     .menu--primary {
+       background-color: $color--arsenic;
+     }
+   }
+   
+   /**
+    * Secondary navigation
+    *
+    * The secondary navigation bar is a container component similar to `nav`.
+    * It provides a background and some paddings to match the main `nav` content.
+    * Can be made stuck to the viewport under the main `nav` bar by adding the `is-stuck` class.
+    *
+    *
+    * The layout of the secondary navigation is provided by children components.
+    *
+    * Markup:
+       <div class="nav-secondary l-spaced l-spaced--flush">
+           <h1 class="nav-secondary__title">Cash Flow</h1>
+           <nav>
+             <ul class="pc-layout pc-layout--auto pc-layout--small">
+               <li class="pc-layout__item">
+                 <a class="cashflow pc-btn pc-btn--bare" href="#">Cash Flow</a>
+               </li>
+               <li class="pc-layout__item">
+                 <a class="income pc-btn pc-btn--bare" href="#">Income</a>
+               </li>
+               <li class="pc-layout__item">
+                 <a class="expense pc-btn pc-btn--bare is-active" href="#">Expense</a>
+               </li>
+             </ul>
+           </nav>
+       </div>
+    *
+    * Styleguide Components - Nav - Secondary
+    */
+   .nav-secondary {
+     background-color: #fff;
+     border-bottom: 1px solid $color--arsenic;
+     box-sizing: border-box;
+     padding: $nav-secondary-padding--vertical $nav-secondary-padding--horizontal;
+   
+     &.is-stuck {
+       top: $nav-height;
+       width: $main-container--width;
+       background-color: #fff;
+     }
+   
+     .pc-alert-box {
+       margin: 0 (-$inuit-base-spacing-unit--small) (-$inuit-base-spacing-unit--small);
+     }
+   }
+   
+   /**
+    *  1. The height of the title should match the height of the regular button
+    *     (we use them for the secondary nav-menu).
+    */
+   .nav-secondary__title {
+     color: $color--arsenic;
+     margin-bottom: 0;
+     line-height: $line-height--base + $inuit-base-spacing-unit--small; /* [1] */
+   }
+   
+   // Defines the line for the secondary navigation which ignores the padding on the sides of the navigation box.
+   .nav-secondary__line--flush {
+     margin-left: -$nav-secondary-padding--horizontal;
+     margin-right: -$nav-secondary-padding--horizontal;
+   }

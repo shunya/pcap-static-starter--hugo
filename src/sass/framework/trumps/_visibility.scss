@@ -1,0 +1,47 @@
+/* ------------------------------------*\
+    #VISIBILITY
+\* ------------------------------------ */
+
+
+/**
+ * A utility class to hide an element.
+ *
+ * <small class="is-hidden">Lorem ipsum</small>
+ *
+ */
+
+/**
+ * 1. Allow `!important` for utilities with high specificity.
+ */
+.is-hidden {
+  display: none !important; /* [1] */ // stylelint-disable-line declaration-no-important
+}
+
+
+/**
+ * A utility class to hide an element.
+ * The main difference from `is-hidden` is that
+ * the element becomes invisible but preserves dimensions.
+ *
+ * <small class="u-invisible">Lorem ipsum</small>
+ *
+ */
+
+/**
+ * 1. Allow `!important` for utilities with high specificity.
+ */
+.u-invisible {
+  visibility: hidden !important; /* [1] */   // stylelint-disable-line declaration-no-important
+}
+
+
+/**
+ * A utility class to hide an element keeping it visible for screen readers.
+ *
+ * Example:
+ * <span class="u-hidden-visually">Lorem ipsum</span>
+ *
+ */
+.u-hidden-visually {
+  @include inuit-hidden-visually();
+}

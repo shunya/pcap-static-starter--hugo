@@ -1,0 +1,192 @@
+/* ============================================================================
+   CORE -> SETTINGS -> COLORS
+   ========================================================================= */
+
+/**
+ * Colors
+ *
+ * Markup:
+ * _colors.html
+ *
+ * Styleguide Framework - Settings - Colors
+ */
+
+
+/* Color Scale (private vars)
+   ========================================================================= */
+$color--dim-gray: #666;
+$color--shuttle-gray: #5d6770;
+$color--gray: #777;
+$color--aluminium: #7d858d;
+$color--gray-chateau: #999ea3;
+$color--link-water: #c3c5c8;
+$color--iron: #e7e8e9;
+$color--solitude: #ebf1f9;
+$color--ghost-white: #f3f3f4;
+$color--tropical-blue: #b3cbea;
+$color--jordy-blue: #8cb0df;
+$color--curious-blue: #407cca;
+$color--st-tropaz: #305685;
+$color--endeavour: #194f90;
+$color--prussian-blue: #113968;
+$color--blue-lagoon: #056080;
+$color--eminence: #693277;
+$color--arsenic: #333e48;
+$color--cardinal: #bb1f3f;
+$color--cabaret: #c84c66;
+$color--froly: #f05d61;
+$color--mango-tango: #d98106;
+$color--dark-tangerine: #ff9e15;
+$color--tangerine-yellow: #ffc708;
+$color--persian-green: #00b088;
+
+
+/* Colors Application
+   ========================================================================= */
+
+$color--base-text: $color--arsenic;
+$color--positive: $color--persian-green;
+$color--negative: $color--cabaret;
+$color--account-details-header: $color--endeavour;
+$color--account-details-button-edit-account: $color--endeavour;
+$color--dashboard-secondary-text: $color--aluminium;
+$color--budgeting-text-emphasized: $color--dark-tangerine;
+$color--selectable-account-name-dark: $color--arsenic;
+$color--selectable-account-info-dark: $color--aluminium;
+
+/* Sidebar Colors
+   ========================================================================= */
+$color--sidebar-tab-selected: $color--curious-blue;
+$color--sidebar-item-selected: $color--curious-blue;
+$color--sidebar-faint-glow: rgba(white, 0.1);
+
+/*  Allocation Colors
+   ========================================================================= */
+
+$color--us-stocks: $color--curious-blue;
+$color--international-stocks: $color--endeavour;
+$color--us-bonds: $color--dark-tangerine;
+$color--international-bonds: $color--tangerine-yellow;
+$color--alternatives: $color--eminence;
+$color--cash: $color--persian-green;
+$color--unclassified: $color--link-water;
+
+/* Graph Colors
+   ========================================================================= */
+
+$color--axis-lines: $color--iron;
+$color--grid-lines: $color--iron;
+$color--axis-labels: $color--gray-chateau;
+$color--zero-line: $color--aluminium;
+$color--chart-hover-line: $color--arsenic;
+$color--chart-hover-circle: $color--arsenic;
+
+/* US Sectors
+   ========================================================================= */
+$color--basic-materials: $color--blue-lagoon;
+$color--communication: $color--tangerine-yellow;
+$color--consumer-cyclical: $color--eminence;
+$color--consumer-staples: $color--shuttle-gray;
+$color--energy: $color--dark-tangerine;
+$color--finance: $color--persian-green;
+$color--healthcare: $color--endeavour;
+$color--industrials: $color--curious-blue;
+$color--technology: $color--jordy-blue;
+$color--utilities: $color--cardinal;
+$color--unknown: $color--link-water;
+
+/*  Financial Planner
+   ========================================================================= */
+
+$color--fp-relationship: $color--gray-chateau;
+$color--fp-chart-education-savings: $color--curious-blue;
+$color--fp-chart-education-growth: $color--persian-green;
+$color--fp-chart-education-shortfall: $color--iron;
+$color--fp-chart-education-goal: $color--ghost-white;
+$color--fp-chart-goal-cost-label: $color--arsenic;
+$color--fp-chart-insurance-savings: $color--curious-blue;
+$color--fp-chart-insurance-current: $color--prussian-blue;
+$color--fp-chart-insurance-needed-low: $color--link-water;
+$color--fp-chart-insurance-needed-high: $color--ghost-white;
+$color--fp-chart-estate-disbursement-direct: $color--curious-blue;
+$color--fp-chart-estate-disbursement-probate: $color--cabaret;
+$color--fp-chart-estate-disbursement-unknown: $color--froly;
+$color--fp-chart-savings-manager-ytd-cash-flow: $color--curious-blue;
+$color--fp-chart-savings-manager-savings-remaining: $color--iron;
+$color--fp-chart-savings-manager-recommended-savings: $color--dark-tangerine;
+$color--fp-chart-savings-manager-account-priority-heading: $color--arsenic;
+$color--fp-chart-savings-manager-account-priority-background: $color--st-tropaz;
+$color--rp-plan-comparison-zero-state-background: $color--ghost-white;
+$color--rp-spending-ability-chart--filled: $color--curious-blue;
+$color--rp-spending-ability-chart-top-label: $color--curious-blue;
+$color--rp-spending-ability-chart-bottom-label: $color--aluminium;
+$color--rp-spending-ability-chart: $color--iron;
+
+/*  Color Schema for Asset and Liability
+   ========================================================================= */
+
+$color-scheme-asset-7: #6771a9 #5989ba #599bd3 #59b0e5 #95cff0 #83ccc2 #13bdaf;
+$color-scheme-asset-15: #3f5977, #6771a9, #5989ba, #599bd3, #59b0e5, #95cff0, #b3e3f9, #58c7dc, #13bdaf, #83ccc2, #bbe0b4, #aad8a2, #8dd18a, #75be89, #629c7a;
+$color-scheme-liability-7: #f05d61 #f27246 #f83 #f7a55b #f7b999 #ffd175 #fff178;
+$color-scheme-liability-15: #e44e3e, #f16c60, #f48968, #f27246, #f06237, #e35532, #f2832e, #f8961d, #fbb44e, #ffd175, #fff178, #f7e757, #fbd736, #f7c545, #f7a55b;
+
+/*  Color Schema for Strategy Allocation
+   ========================================================================= */
+$color-scheme-strategy-allocation: $color--us-stocks $color--international-stocks $color--us-bonds $color--international-bonds $color--alternatives $color--cash $color--unclassified;
+
+
+/*  Color Schema for Asset and Liability
+   ========================================================================= */
+
+$color--funding-dropdown-text: $color--endeavour;
+
+/*  Opportunities
+   ========================================================================= */
+
+$color--tax-lost-harvesting--graph: $color--curious-blue;
+$color--tax-lost-harvesting--action-label: $color--dark-tangerine;
+$color--tax-lost-harvesting--no-action-label: $color--shuttle-gray;
+$color--tax-lost-harvesting--dot-base: $color--link-water;
+
+
+/*  Color Schema for StandAlone Email Charts
+   ========================================================================= */
+$color--cost-of-cash-positive: $color--persian-green;
+$color--cost-of-cash-negative: $color--cabaret;
+
+$color--cost-of-cash--bottom-deposit: $color--persian-green;
+$color--cost-of-cash--bottom-no-deposit: $color--cabaret;
+$color--cost-of-cash--bottom-grid-line: $color--iron;
+$color--cost-of-cash--bottom-zero-line: $color--aluminium;
+$color--cost-of-cash--bottom-dot: $color--persian-green;
+
+$color--cost-of-cash--top-container: $color--aluminium;
+$color--cost-of-cash--top-font: $color--ghost-white;
+$color--cost-of-cash--top-no-deposit: $color--solitude;
+$color--cost-of-cash--top-deposit: $color--curious-blue;
+$color--cost-of-cash--top-grid-line: $color--iron;
+$color--cost-of-cash--top-tool-tip: $color--ghost-white;
+$color--cost-of-cash--top-tool-tip--recommended: $color--tangerine-yellow;
+
+$color--idle-cash-chart--positive: $color--persian-green;
+$color--idle-cash-chart--negative: $color--cabaret;
+$color--idle-cash-chart--bottom-zero-line: $color--solitude;
+$color--idle-cash-chart--bg: $color--endeavour;
+$color--idle-cash-chart--grid-line: $color--curious-blue;
+$color--idle-cash-chart--init-balance: $color--tangerine-yellow;
+$color--idle-cash-chart--dot: $color--persian-green;
+$color--idle-cash-chart--dot--negative: $color--cardinal;
+$color--idle-cash-chart--tool-tip: white;
+
+/*  Color Schema for Activity Feed
+   ========================================================================= */
+$color--strategy-line-separator: $color--gray-chateau;
+
+
+/* Deprecated
+   ========================================================================= */
+
+$color-primary: #3b8fe1;
+$color-success: #51bd90;
+$color-warning: #fb5c00;
+$color-negative: #f03240;

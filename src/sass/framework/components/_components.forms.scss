@@ -1,0 +1,207 @@
+// TODO needs refactoring:
+// - move to base sub-directory, style tag instead of class names
+// - extract labels
+// - revisit the implementation in general
+
+$pcLabelColor: #7c7c7c;
+$pcInputTextColor: #000;
+
+
+/**
+ * Provides vertical spacing between form inputs.
+ */
+.pcap-form-group {
+  margin-bottom: $inuit-base-spacing-unit;
+}
+
+.pcap-form-group--large {
+  margin-bottom: $inuit-base-spacing-unit--large;
+}
+
+
+/**
+ * Label element
+ *
+ * This class should be eventually replaced by styling
+ * the `label` element.
+ *
+ * 1. Resets bold weight from Bootstrap. Needs to be remove.
+ */
+.pcap-input-label {
+  color: $pcLabelColor;
+  display: inline-block;
+  font-weight: normal;  /* [1] */
+}
+
+
+/**
+ * NOTE:
+ * -----
+ *
+ * This class defines extra styles for compatibility with
+ * Bootstrap grid. Should not be used anymore since we've
+ * moved to Inuit https://github.com/inuitcss/objects.layout
+ *
+ * @deprecated Please use `pcap-form-group`
+ */
+.pc-form-group {
+  width: 100%;
+  margin: 0 0 15px 0;
+}
+
+
+/**
+ * @deprecated Please use `pcap-input-label`
+ */
+.pc-input-label {
+  color: $pcLabelColor;
+  display: block;
+  margin: 0 0 7px 0;
+  font-weight: normal;
+  white-space: nowrap;
+}
+
+
+/**
+ * @deprecated Use `<small>` or `.milli` instead
+ */
+.pc-input-label.mod-sub-label {
+  font-size: 12px;
+}
+
+
+.pc-checkbox-label {
+  display: block;
+  font-weight: normal;
+  input[type="checkbox"] { margin-right: 3px; }
+}
+
+
+/**
+ * 1. `styles/scss/bootstrap/_forms.scss` being included
+ *    after the framework override the styles defined here.
+ *    Temporarily increase the specificity here till
+ *    `styles/scss/bootstrap/_forms.scss` is removed.
+ */
+.pc-input-control {
+  color: $pcInputTextColor;
+  width: 100%;
+  padding: 6px 12px !important;       /* [1] */
+  border: 1px solid #ccc !important;  /* [1] */
+  border-radius: 0 !important;        /* [1] */
+  height: 34px;
+  font-size: 14px;
+  background: #fff;
+  transition: border-color ease-in-out 0.15s,
+              box-shadow ease-in-out 0.15s;
+  outline: 0 none;
+  &:focus {
+    border-color: #66afe9 !important; /* [1] */
+    box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075),
+                0 0 2px rgba(102, 175, 233, 0.6);
+  }
+  &[disabled] {
+    background: darken(#fff, 15%);
+  }
+  box-sizing: border-box;
+}
+
+/**
+ * 1. `styles/scss/bootstrap/_forms.scss` being included
+ *    after the framework override the styles defined here.
+ *    Temporarily increase the specificity here till
+ *    `styles/scss/bootstrap/_forms.scss` is removed.
+ */
+.pc-input-control--error {
+  border-color: $color-negative !important;   /* [1] */
+  &:focus {
+    border-color: $color-negative !important; /* [1] */
+  }
+}
+
+
+/**
+ * TODO: temporary solution since we reuse `.pc-input-control`
+ * for all form fields.
+ *
+ * Needs refactoring when we do a reskin. Style bare tags instead.
+ */
+textarea.pc-input-control {
+  height: auto;
+}
+
+.pc-input-date {
+  display: inline-block;
+  padding-left: 38px !important;
+  background: url("/static/img/appointment/date_calendar.png") 9px 50% no-repeat;
+  background-size: 20px 20px;
+}
+
+/**
+ * 1. `!important` is to override the "important" styles we defined above
+ *    for the `pc-input-control`.
+ */
+.pc-input-select {
+  -webkit-appearance: none;
+     -moz-appearance: none;
+          appearance: none;
+  padding: 0 12px !important; /* [1] */
+  text-indent: 0.01px; // FF 31
+  text-overflow: '';   // FF 31
+  background: url("/static/img/forecast/icons/downArrow.svg") right 6px center no-repeat;
+  background-size: 12px auto;
+  &::-ms-expand { // IE
+    border: 0;
+    text-indent: -9999px; // Hides the default arrow
+    background: transparent url("/static/img/forecast/icons/downArrow.svg");
+  }
+  &:-moz-focusring {
+    color: transparent; // Remove dotted outline in FF
+    text-shadow: 0 0 0 #000;
+  }
+  &.is-firefox-30-34 { // Firefox 30 - 34 do not respect -moz-appearance: none;
+    background: none;
+    -webkit-appearance: menulist;
+       -moz-appearance: menulist;
+            appearance: menulist;
+  }
+}
+
+.pc-input-checkbox {
+  position: relative;
+  top: -1px;
+  margin-right: 3px;
+}
+
+.pc-input-prepend, .pc-input-append {
+  position: relative;
+  display: table;
+  border-collapse: separate;
+}
+
+.pc-input-prepend-addon {
+  width: 34px;
+  &:first-child { border-right: 0; }
+}
+
+.pc-input-append-addon {
+  width: 34px;
+  &:last-child { border-left: 0; }
+}
+
+.pc-input-prepend-addon, .pc-input-append-addon {
+  padding: 6px 12px;
+  font-size: 14px;
+  font-weight: normal;
+  line-height: 1;
+  color: #555555;
+  text-align: center;
+  background-color: #eeeeee;
+  border: 1px solid #cccccc;
+  width: 1%;
+  max-width: 34px;
+  white-space: nowrap;
+  vertical-align: middle;
+  display: table-cell;
+}
+

@@ -1,0 +1,14 @@
+/*------------------------------------*\
+    #TAKEAWAY
+\*------------------------------------*/
+
+/**
+ * Specifies the emphasized section on the page which
+ * communicates the key idea or takeaway.
+ */
+
+.pc-takeway {
+  @extend %pc-alpha;
+  @extend %margin-bottom;
+  font-weight: 300;
+}

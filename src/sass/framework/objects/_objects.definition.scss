@@ -1,0 +1,28 @@
+/*------------------------------------*\
+    #DEFINITION
+\*------------------------------------*/
+
+
+/**
+ * Hints that a word or a fragment of text has a hover over explanation.
+ *
+ * Example:
+ *
+ * <p>Account Owner(s) or immediate family member is a
+ *    <span class="definition" title='Control persons include senior managers, members of the board of directors.'>control</span>
+ *    person of a publicly-traded company.</p>
+ *
+ */
+
+.definition {
+  border-bottom: 1px dashed #b3b3b3;
+  cursor: help;
+  white-space: nowrap;
+}
+
+
+.u-text-danger {
+  .definition {
+    border-color: lighten($color-negative, 15%);
+  }
+}
